@@ -1,125 +1,202 @@
 'use client';
 
-import { useState, useMemo } from 'react';
-import { Button } from '@/components/ui/button';
-import { Switch } from '@/components/ui/switch';
-import { Label } from '@/components/ui/label';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import {
+  Building2,
+  PartyPopper,
+  Star,
+  UserCheck,
+  Wrench,
+  Users,
+  Briefcase,
+  HelpCircle,
+  Map,
+} from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { RegistrationDialog } from '@/components/registration-dialog';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
+import { AnimatedCard } from '@/components/animated-card';
+import { GpsRoadmap } from '@/components/gps-roadmap';
 
-const day1Events = [
-    { time: "09:00 AM", title: "Registration & Welcome Kit" },
-    { time: "10:00 AM", title: "Inaugural Ceremony & Keynote" },
-    { time: "11:30 AM", title: "Technical Workshop 1" },
-    { time: "01:00 PM", title: "Lunch Break" },
-    { time: "02:00 PM", title: "Industrial Visit" },
-    { time: "06:00 PM", title: "Cultural Night & Networking" },
+const faqItems = [
+  {
+    question: 'Who is eligible to participate in RevUp?',
+    answer:
+      'RevUp is open to all university students, professionals, and technology enthusiasts who have a passion for vehicular technology, electric mobility, and intelligent transportation systems.',
+  },
+  {
+    question: 'What is the registration fee for the event?',
+    answer: 'Registration details will be announced soon. Stay tuned!',
+  },
+  {
+    question:
+      'Will accommodation be provided for out-station participants?',
+    answer:
+      'We will provide a list of recommended nearby accommodations. Please note that accommodation is not included in the registration fee.',
+  },
+  {
+    question: 'Will food be provided during the event?',
+    answer: 'Yes, lunch and refreshments will be provided on both days of the event.',
+  },
 ];
-  
-const day2Events = [
-    { time: "10:00 AM", title: "Expert Talk Session" },
-    { time: "11:30 AM", title: "Technical Workshop 2" },
-    { time: "01:00 PM", title: "Lunch Break" },
-    { time: "03:00 PM", title: "Project Competition" },
-    { time: "04:00 PM", title: "Valedictory Ceremony" },
+
+const highlightCards = [
+  {
+    icon: Wrench,
+    title: 'Technical Workshops',
+    description:
+      'A blend of technical workshops to provide hands-on exposure to cutting-edge technologies shaping the future of mobility.',
+  },
+  {
+    icon: UserCheck,
+    title: 'Expert Talk Sessions',
+    description:
+      'Engage directly with industry experts and explore advancements in electric vehicles and intelligent transport systems.',
+  },
+  {
+    icon: Building2,
+    title: 'Industrial Visits',
+    description:
+      'Gain practical exposure through field visits to leading organizations in the vehicular domain.',
+  },
+  {
+    icon: PartyPopper,
+    title: 'Cultural Evenings & Networking',
+    description:
+      'Connect, share ideas, and build networks in a vibrant celebration of creativity and collaboration.',
+  },
 ];
 
-const eventsData = {
-  day1: day1Events,
-  day2: day2Events,
-};
-
-// Config for the speedometer arc
-const START_ANGLE = -120; // in degrees
-const END_ANGLE = 120;
-const ANGLE_RANGE = END_ANGLE - START_ANGLE;
-
-export const SpeedometerSchedule = () => {
-  const [currentDay, setCurrentDay] = useState<'day1' | 'day2'>('day1');
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const handleDayChange = (isDay2: boolean) => {
-    setCurrentDay(isDay2 ? 'day2' : 'day1');
-    setCurrentIndex(0);
-  };
-  
-  const currentEvents = useMemo(() => eventsData[currentDay], [currentDay]);
-
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % currentEvents.length);
-  };
-
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + currentEvents.length) % currentEvents.length);
-  };
-
-  const currentEvent = currentEvents[currentIndex];
-  const needleAngle = START_ANGLE + (currentIndex / (currentEvents.length - 1)) * ANGLE_RANGE;
-
+export default function RevUpPage() {
   return (
-    <div className="flex flex-col items-center gap-8">
-      <div className="relative w-[350px] h-[200px] md:w-[500px] md:h-[280px]">
-        {/* Speedometer Arc */}
-        <div className="absolute top-0 left-0 w-full h-[200%] border-[16px] md:border-[24px] border-primary/20 rounded-full border-b-transparent border-l-transparent border-r-transparent" style={{ transform: 'rotate(-150deg)' }}></div>
-        <div className="absolute top-0 left-0 w-full h-[200%] border-[16px] md:border-[24px] border-accent rounded-full border-b-transparent border-l-transparent border-r-transparent transition-all duration-700 ease-in-out" 
-          style={{ 
-            transform: 'rotate(-150deg)',
-            clipPath: `path('M ${500/2} 0 A ${500/2-12} ${500/2-12} 0 0 1 ${500/2 + (500/2-12) * Math.cos((needleAngle-90)*Math.PI/180)} ${(500/2) + (500/2-12) * Math.sin((needleAngle-90)*Math.PI/180)} L ${500/2} ${500/2} Z')`
-          }}>
-        </div>
+    <div className="container mx-auto px-4 py-8 md:py-12">
+      <section
+        id="about-revup"
+        className="mt-16 md:mt-24 text-center p-8 bg-card rounded-2xl shadow-md"
+      >
+        <h1 className="text-4xl md:text-5xl font-extrabold text-primary tracking-tight mb-6 font-headline">
+          About RevUp
+        </h1>
+        <p className="max-w-4xl mx-auto text-lg text-foreground/80">
+          RevUp is a flagship initiative of the IEEE Vehicular Technology
+          Society Student Branch Chapter (VTS SBC) of NSS College of
+          Engineering, Palakkad, designed to ignite curiosity and innovation in
+          the ever-evolving field of vehicular technology. This two-day
+          immersive program brings together students, professionals, and
+          enthusiasts through a blend of technical workshops, industrial
+          visits, expert talk sessions, and cultural evenings, creating a
+          perfect balance of learning and experience. Participants get the
+          unique opportunity to engage directly with industry experts, explore
+          advancements in electric vehicles, intelligent transport systems, and
+          sustainable mobility, and gain practical exposure through field
+          visits to leading organizations in the vehicular domain. RevUp stands
+          as a symbol of the chapter's commitment to empowering young engineers
+          to drive technological progress and steer toward a smarter,
+          sustainable, and connected world.
+        </p>
+      </section>
 
-        {/* Needle */}
-        <div className="absolute bottom-[-10px] md:bottom-0 left-1/2 w-2 h-1/2 origin-bottom transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-50%) rotate(${needleAngle}deg)` }}>
-          <div className="w-full h-full bg-primary rounded-t-full"></div>
+      <section id="demographics" className="mt-16 md:mt-24">
+        <h2 className="text-3xl font-bold text-primary mb-8 text-center font-headline">
+          Our Audience
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <Card className="text-center bg-card-foreground/5">
+            <CardHeader>
+              <Users className="h-12 w-12 mx-auto text-accent mb-4" />
+              <CardTitle className="text-5xl font-extrabold text-primary">
+                70+
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-xl font-semibold text-foreground/80">
+                STUDENTS
+              </p>
+            </CardContent>
+          </Card>
+          <Card className="text-center bg-card-foreground/5">
+            <CardHeader>
+              <Briefcase className="h-12 w-12 mx-auto text-accent mb-4" />
+              <CardTitle className="text-5xl font-extrabold text-primary">
+                25+
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-xl font-semibold text-foreground/80">
+                COLLEGES
+              </p>
+            </CardContent>
+          </Card>
         </div>
-        <div className="absolute bottom-[-20px] md:bottom-[-10px] left-1/2 -translate-x-1/2 w-8 h-8 md:w-10 md:h-10 bg-card border-4 border-primary rounded-full z-10"></div>
-        
-        {/* Event Labels */}
-        {currentEvents.map((event, index) => {
-          const angle = START_ANGLE + (index / (currentEvents.length - 1)) * ANGLE_RANGE;
-          const x = 50 + 48 * Math.cos(angle * Math.PI / 180);
-          const y = 50 + 48 * Math.sin(angle * Math.PI / 180);
-          return (
-            <div key={event.time} className="absolute text-xs md:text-sm text-muted-foreground transition-all"
-              style={{
-                top: `${y}%`,
-                left: `${x}%`,
-                transform: `translate(-50%, -50%) rotate(${angle + 90}deg)`,
-                opacity: currentDay ? 1 : 0,
-                transitionDelay: `${index * 50}ms`
-              }}
-            >
-                <span className={cn("block transition-colors", currentIndex === index && "text-primary font-bold")}>{event.time}</span>
-            </div>
-          );
-        })}
+      </section>
 
-        {/* Center Display */}
-        <div className="absolute top-[60%] left-1/2 -translate-x-1/2 w-full text-center px-4">
-            <p className="text-lg md:text-xl font-bold text-primary transition-opacity duration-300 h-14">{currentEvent.title}</p>
+      <section id="events" className="mt-16 md:mt-24">
+        <h2 className="text-3xl font-bold text-primary mb-8 flex items-center gap-3 font-headline justify-center">
+          <Star className="h-8 w-8 text-accent" />
+          RevUp Event Highlights
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {highlightCards.map((card, index) => {
+            const Icon = card.icon;
+            return (
+              <AnimatedCard key={card.title} index={index}>
+                <Card className="h-full transition-all duration-300 ease-in-out hover:scale-[1.03] hover:shadow-xl">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-3">
+                      <Icon className="h-6 w-6 text-accent" />
+                      {card.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground">
+                      {card.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </AnimatedCard>
+            );
+          })}
         </div>
-      </div>
+      </section>
 
-      {/* Controls */}
-      <div className="flex flex-col items-center gap-4 mt-4 md:mt-0">
-          <div className="flex items-center space-x-2">
-            <Label htmlFor="day-toggle">Day 1</Label>
-            <Switch
-              id="day-toggle"
-              checked={currentDay === 'day2'}
-              onCheckedChange={handleDayChange}
-            />
-            <Label htmlFor="day-toggle">Day 2</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <Button variant="outline" size="icon" onClick={handlePrev} aria-label="Previous Event">
-              <ChevronLeft className="h-4 w-4" />
-            </Button>
-            <Button variant="outline" size="icon" onClick={handleNext} aria-label="Next Event">
-              <ChevronRight className="h-4 w-4" />
-            </Button>
-          </div>
-        </div>
+      <section id="schedule" className="mt-16 md:mt-24">
+        <h2 className="text-3xl font-bold text-primary mb-8 text-center font-headline flex items-center justify-center gap-3">
+          <Map className="h-8 w-8 text-accent" />
+          Your RevUp Roadmap
+        </h2>
+        <GpsRoadmap />
+      </section>
+
+      <section id="faq" className="mt-16 md:mt-24">
+        <h2 className="text-3xl font-bold text-primary mb-8 text-center font-headline flex items-center justify-center gap-3">
+          <HelpCircle className="h-8 w-8 text-accent" />
+          Frequently Asked Questions
+        </h2>
+        <Accordion type="single" collapsible className="w-full max-w-3xl mx-auto">
+          {faqItems.map((item, index) => (
+            <AccordionItem value={`item-${index}`} key={index}>
+              <AccordionTrigger className="text-left text-lg font-semibold hover:no-underline">
+                {item.question}
+              </AccordionTrigger>
+              <AccordionContent className="text-base text-muted-foreground pt-2">
+                {item.answer}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </section>
+      
+      <section id="register" className="mt-16 md:mt-24 text-center">
+        <h2 className="text-3xl font-bold text-primary mb-4 font-headline">Ready to RevUp?</h2>
+        <p className="text-lg text-foreground/80 mb-8 max-w-2xl mx-auto">
+          Secure your spot at RevUp and be part of the future of vehicular technology.
+        </p>
+        <RegistrationDialog eventTitle="RevUp" />
+      </section>
     </div>
   );
-};
+}

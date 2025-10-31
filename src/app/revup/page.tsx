@@ -20,7 +20,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { AnimatedCard } from '@/components/animated-card';
-import { SpeedometerSchedule } from '@/components/speedometer-schedule';
+import { GpsRoadmap } from '@/components/gps-roadmap';
 
 const faqItems = [
   {
@@ -166,9 +166,9 @@ export default function RevUpPage() {
       <section id="schedule" className="mt-16 md:mt-24">
         <h2 className="text-3xl font-bold text-primary mb-8 text-center font-headline flex items-center justify-center gap-3">
           <Map className="h-8 w-8 text-accent" />
-          RevUp Schedule
+          Your RevUp Roadmap
         </h2>
-        <SpeedometerSchedule />
+        <GpsRoadmap />
       </section>
 
       <section id="faq" className="mt-16 md:mt-24">
