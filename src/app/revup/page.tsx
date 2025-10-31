@@ -20,7 +20,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { AnimatedCard } from '@/components/animated-card';
-import { Itinerary } from '@/components/itinerary';
+import { DashboardItinerary } from '@/components/dashboard-itinerary';
 
 const faqItems = [
   {
@@ -168,7 +168,7 @@ export default function RevUpPage() {
           <Map className="h-8 w-8 text-accent" />
           Your RevUp Itinerary
         </h2>
-        <Itinerary />
+        <DashboardItinerary />
       </section>
 
       <section id="faq" className="mt-16 md:mt-24">

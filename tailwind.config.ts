@@ -93,21 +93,16 @@ export default {
             transform: 'translateX(-50%)',
           },
         },
-        'fade-in': {
-          from: { opacity: '0' },
+        'fade-in-fast': {
+          from: { opacity: '0.5' },
           to: { opacity: '1' },
-        },
-        'fade-out': {
-          from: { opacity: '1' },
-          to: { opacity: '0' },
         },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'scroll': 'scroll 40s linear infinite',
-        'fade-in': 'fade-in 0.3s ease-out forwards',
-        'fade-out': 'fade-out 0.3s ease-in forwards',
+        'fade-in-fast': 'fade-in-fast 0.3s ease-out forwards',
       },
     },
   },
