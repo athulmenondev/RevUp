@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { inView, useMotionValue, useSpring } from 'motion';
+import { animate, inView } from 'motion';
 
 interface CountUpProps {
   to: number;
@@ -19,103 +19,46 @@ interface CountUpProps {
 export default function CountUp({
   to,
   from = 0,
-  direction = 'up',
-  delay = 0,
   duration = 2,
+  delay = 0,
   className = '',
-  startWhen = true,
-  separator = '',
-  onStart,
-  onEnd
+  onEnd,
 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const [isInView, setIsInView] = useState(false);
-  const motionValue = useMotionValue(direction === 'down' ? to : from);
-
-  const damping = 20 + 40 * (1 / duration);
-  const stiffness = 100 * (1 / duration);
-
-  const springValue = useSpring(motionValue, {
-    damping,
-    stiffness
-  });
-
-  const getDecimalPlaces = (num: number): number => {
-    const str = num.toString();
-    if (str.includes('.')) {
-      const decimals = str.split('.')[1];
-      if (parseInt(decimals) !== 0) {
-        return decimals.length;
-      }
-    }
-    return 0;
-  };
-
-  const maxDecimals = Math.max(getDecimalPlaces(from), getDecimalPlaces(to));
-
-  useEffect(() => {
-    if (ref.current) {
-      ref.current.textContent = String(direction === 'down' ? to : from);
-    }
-  }, [from, to, direction]);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
 
     const stop = inView(element, () => {
-      setIsInView(true);
-      return () => setIsInView(false); // Optional: stop animation when out of view
-    }, { margin: "0px" });
+      if (hasAnimated) return;
 
-    return () => stop();
-  }, []);
-
-  useEffect(() => {
-    if (isInView && startWhen) {
-      if (typeof onStart === 'function') {
-        onStart();
-      }
-
-      const timeoutId = setTimeout(() => {
-        motionValue.set(direction === 'down' ? from : to);
-      }, delay * 1000);
-
-      const durationTimeoutId = setTimeout(
-        () => {
-          if (typeof onEnd === 'function') {
+      animate(from, to, {
+        duration,
+        delay,
+        onUpdate(latest) {
+          element.textContent = latest.toFixed(0);
+        },
+        onComplete() {
+          if (onEnd) {
             onEnd();
           }
         },
-        delay * 1000 + duration * 1000
-      );
+      });
+
+      setHasAnimated(true);
 
       return () => {
-        clearTimeout(timeoutId);
-        clearTimeout(durationTimeoutId);
+        // This function is called when the element leaves the view
+        // if `once: false` were used in `inView`.
+        // Since we're using the default `once: true`, this is less critical
+        // but good practice to have.
       };
-    }
-  }, [isInView, startWhen, motionValue, direction, from, to, delay, onStart, onEnd, duration]);
-
-  useEffect(() => {
-    const unsubscribe = springValue.on('change', latest => {
-      if (ref.current) {
-        const hasDecimals = maxDecimals > 0;
-
-        const options: Intl.NumberFormatOptions = {
-          useGrouping: !!separator,
-          minimumFractionDigits: hasDecimals ? maxDecimals : 0,
-          maximumFractionDigits: hasDecimals ? maxDecimals : 0
-        };
-
-        const formattedNumber = Intl.NumberFormat('en-US', options).format(latest);
-
-        ref.current.textContent = separator ? formattedNumber.replace(/,/g, separator) : formattedNumber;
-      }
     });
 
-    return () => unsubscribe();
-  }, [springValue, separator, maxDecimals]);
+    return () => stop();
+  }, [from, to, duration, delay, hasAnimated, onEnd]);
 
-  return <span className={className} ref={ref} />;
+  return <span ref={ref} className={className} />;
 }
