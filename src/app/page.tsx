@@ -1,6 +1,6 @@
 import { EventCard } from "@/components/event-card";
 import { events } from "@/lib/events";
-import { Calendar, Zap } from "lucide-react";
+import { Calendar, Zap, Target, Eye } from "lucide-react";
 import { RevUpLogo } from "@/components/revup-logo";
 
 export default function Home() {
@@ -37,6 +37,26 @@ export default function Home() {
         </h2>
         <p className="max-w-3xl mx-auto text-lg text-foreground/80">
             Our events are designed to foster learning and networking among tech enthusiasts. Gain insights from industry leaders, participate in hands-on workshops, and expand your professional network.
+        </p>
+      </section>
+
+      <section id="mission" className="mt-16 md:mt-24 text-center p-8 bg-card rounded-2xl shadow-md">
+        <h2 className="text-3xl font-bold text-primary mb-4 font-headline flex items-center justify-center gap-3 pt-16">
+            <Target className="h-8 w-8 text-accent" />
+            Our Mission
+        </h2>
+        <p className="max-w-3xl mx-auto text-lg text-foreground/80">
+            To foster a community of innovators and leaders in vehicular technology, providing a platform for continuous learning, professional development, and networking. We aim to bridge the gap between academia and industry.
+        </p>
+      </section>
+
+      <section id="vision" className="mt-16 md:mt-24 text-center p-8 bg-card rounded-2xl shadow-md">
+        <h2 className="text-3xl font-bold text-primary mb-4 font-headline flex items-center justify-center gap-3 pt-16">
+            <Eye className="h-8 w-8 text-accent" />
+            Our Vision
+        </h2>
+        <p className="max-w-3xl mx-auto text-lg text-foreground/80">
+            To be a leading student branch chapter, recognized for our contribution to the advancement of vehicular technology and for empowering students to become pioneers in the field.
         </p>
       </section>
     </div>
