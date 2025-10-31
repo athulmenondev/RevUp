@@ -109,8 +109,8 @@ const TimelineCard = ({
       )}
     >
       <div className="hidden md:flex w-5/12"></div>
-      <div className="hidden md:flex absolute w-10 h-10 bg-accent text-accent-foreground rounded-full items-center justify-center top-1/2 -translate-y-1/2 group-odd:right-1/2 group-odd:-mr-5 group-even:left-1/2 group-even:-ml-5 z-10 shadow-lg border-4 border-card">
-        <Icon className="w-5 h-5" />
+      <div className="hidden md:flex absolute w-8 h-8 bg-accent text-accent-foreground rounded-full items-center justify-center top-1/2 -translate-y-1/2 group-odd:right-1/2 group-odd:-mr-4 group-even:left-1/2 group-even:-ml-4 z-10 shadow-lg border-2 border-card">
+        <Icon className="w-4 h-4" />
       </div>
       <div
         className={cn(
