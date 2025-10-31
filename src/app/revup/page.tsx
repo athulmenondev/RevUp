@@ -1,0 +1,142 @@
+import {
+  Building2,
+  PartyPopper,
+  Star,
+  UserCheck,
+  Wrench,
+  Users,
+  Briefcase,
+} from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+
+export default function RevUpPage() {
+  return (
+    <div className="container mx-auto px-4 py-8 md:py-12">
+      <section
+        id="about-revup"
+        className="mt-16 md:mt-24 text-center p-8 bg-card rounded-2xl shadow-md"
+      >
+        <h1 className="text-4xl md:text-5xl font-extrabold text-primary tracking-tight mb-6 font-headline">
+          About RevUp
+        </h1>
+        <p className="max-w-4xl mx-auto text-lg text-foreground/80">
+          RevUp is a flagship initiative of the IEEE Vehicular Technology
+          Society Student Branch Chapter (VTS SBC) of NSS College of
+          Engineering, Palakkad, designed to ignite curiosity and innovation in
+          the ever-evolving field of vehicular technology. This two-day
+          immersive program brings together students, professionals, and
+          enthusiasts through a blend of technical workshops, industrial
+          visits, expert talk sessions, and cultural evenings, creating a
+          perfect balance of learning and experience. Participants get the
+          unique opportunity to engage directly with industry experts, explore
+          advancements in electric vehicles, intelligent transport systems, and
+          sustainable mobility, and gain practical exposure through field
+
+          visits to leading organizations in the vehicular domain. RevUp stands
+          as a symbol of the chapter's commitment to empowering young engineers
+          to drive technological progress and steer toward a smarter,
+          sustainable, and connected world.
+        </p>
+      </section>
+
+      <section id="demographics" className="mt-16 md:mt-24">
+        <h2 className="text-3xl font-bold text-primary mb-8 text-center font-headline">
+          Our Audience
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <Card className="text-center bg-card-foreground/5">
+            <CardHeader>
+              <Users className="h-12 w-12 mx-auto text-accent mb-4" />
+              <CardTitle className="text-5xl font-extrabold text-primary">
+                70+
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-xl font-semibold text-foreground/80">
+                STUDENTS
+              </p>
+            </CardContent>
+          </Card>
+          <Card className="text-center bg-card-foreground/5">
+            <CardHeader>
+              <Briefcase className="h-12 w-12 mx-auto text-accent mb-4" />
+              <CardTitle className="text-5xl font-extrabold text-primary">
+                25+
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-xl font-semibold text-foreground/80">
+                COLLEGES
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      <section id="events" className="mt-16 md:mt-24">
+        <h2 className="text-3xl font-bold text-primary mb-8 flex items-center gap-3 font-headline justify-center">
+          <Star className="h-8 w-8 text-accent" />
+          RevUp Event Highlights
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3">
+                <Wrench className="h-6 w-6 text-accent" />
+                Technical Workshops
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground">
+                A blend of technical workshops to provide hands-on exposure to
+                cutting-edge technologies shaping the future of mobility.
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3">
+                <UserCheck className="h-6 w-6 text-accent" />
+                Expert Talk Sessions
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground">
+                Engage directly with industry experts and explore advancements
+                in electric vehicles and intelligent transport systems.
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3">
+                <Building2 className="h-6 w-6 text-accent" />
+                Industrial Visits
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground">
+                Gain practical exposure through field visits to leading
+                organizations in the vehicular domain.
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3">
+                <PartyPopper className="h-6 w-6 text-accent" />
+                Cultural Evenings & Networking
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground">
+                Connect, share ideas, and build networks in a vibrant
+                celebration of creativity and collaboration.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+    </div>
+  );
+}

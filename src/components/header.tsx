@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Button } from "./ui/button";
 
 const VtsLogo = () => (
   <svg
@@ -44,12 +45,15 @@ export function Header() {
             SBC NSSCE
           </span>
         </Link>
-        <nav className="hidden md:flex gap-6">
+        <nav className="hidden md:flex items-center gap-4">
           <Link href="/#home" className="text-muted-foreground hover:text-primary transition-colors font-medium">Home</Link>
-          <Link href="/#events" className="text-muted-foreground hover:text-primary transition-colors font-medium">Events</Link>
+          <Link href="/revup" className="text-muted-foreground hover:text-primary transition-colors font-medium">RevUp</Link>
           <Link href="/#about" className="text-muted-foreground hover:text-primary transition-colors font-medium">About</Link>
           <Link href="/#mission" className="text-muted-foreground hover:text-primary transition-colors font-medium">Mission</Link>
           <Link href="/#vision" className="text-muted-foreground hover:text-primary transition-colors font-medium">Vision</Link>
+          <Button asChild>
+            <Link href="/revup">Register Now</Link>
+          </Button>
         </nav>
       </div>
     </header>
