@@ -18,7 +18,7 @@ const AnimatedCard = ({ animation, digit }: { animation: string; digit: string }
   return (
     <div className={cn("relative h-full w-full", animation)}>
       <div className="absolute inset-0">
-        <div className="flex h-full w-full items-center justify-center bg-card text-4xl font-bold text-accent rounded-lg shadow-lg">
+        <div className="flex h-full w-full items-center justify-center bg-card text-4xl md:text-6xl font-bold text-accent rounded-lg shadow-lg">
           {digit}
         </div>
       </div>
@@ -29,12 +29,12 @@ const AnimatedCard = ({ animation, digit }: { animation: string; digit: string }
 const StaticCard = ({ position, digit }: { position: 'upper' | 'lower'; digit: string }) => {
   return (
     <div className={cn(
-      "relative h-1/2 w-full overflow-hidden rounded-t-lg",
-      { 'rounded-b-lg rounded-t-none': position === 'lower' }
+      "relative h-1/2 w-full overflow-hidden",
+      { 'rounded-t-lg': position === 'upper', 'rounded-b-lg': position === 'lower' }
     )}>
       <div className="absolute inset-0">
         <div className={cn(
-          "flex h-full w-full items-center justify-center bg-card text-4xl font-bold text-accent",
+          "flex h-full w-full items-center justify-center bg-card text-4xl md:text-6xl font-bold text-accent",
           { 'items-end': position === 'upper', 'items-start': position === 'lower' }
         )}>
           {digit}
@@ -45,15 +45,28 @@ const StaticCard = ({ position, digit }: { position: 'upper' | 'lower'; digit: s
 };
 
 const FlipUnitContainer = ({ digit, shuffle, unit }: { digit: string; shuffle: boolean; unit: string }) => {
-  const previousDigit = String(parseInt(digit, 10) + 1).padStart(2, '0');
+  let currentDigit: string | number = +digit;
+  let previousDigit: string | number = +digit + 1;
+
+  if (unit !== 'hours') {
+    previousDigit = previousDigit === 60 ? 59 : previousDigit;
+  } else {
+    previousDigit = previousDigit === 24 ? 23 : previousDigit;
+  }
+
+  const digit1 = shuffle ? previousDigit : currentDigit;
+  const digit2 = !shuffle ? previousDigit : currentDigit;
+
+  const animation1 = shuffle ? 'fold' : 'unfold';
+  const animation2 = !shuffle ? 'fold' : 'unfold';
 
   return (
-    <div className="relative h-16 w-16">
-      <StaticCard position="upper" digit={digit} />
-      <StaticCard position="lower" digit={previousDigit} />
-      <AnimatedCard digit={digit} animation={shuffle ? 'fold' : 'unfold'} />
-      <AnimatedCard digit={previousDigit} animation={shuffle ? 'unfold' : 'fold'} />
-      <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-sm uppercase text-muted-foreground">
+    <div className="relative h-24 w-24 md:h-32 md:w-32">
+      <StaticCard position="upper" digit={String(currentDigit).padStart(2, '0')} />
+      <StaticCard position="lower" digit={String(previousDigit).padStart(2, '0')} />
+      <AnimatedCard digit={String(digit1).padStart(2, '0')} animation={animation1} />
+      <AnimatedCard digit={String(digit2).padStart(2, '0')} animation={animation2} />
+      <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-sm uppercase text-muted-foreground tracking-widest">
         {unit}
       </div>
     </div>
@@ -81,7 +94,7 @@ export const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
     days: false,
     hours: false,
     minutes: false,
-    seconds: false,
+    seconds: true,
   });
 
   useEffect(() => {
@@ -103,11 +116,10 @@ export const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
 
   return (
     <div className="flex justify-center gap-4 md:gap-8 pb-8">
-      {Object.entries(timeLeft).map(([unit, value]) => (
-        <div key={unit} className="flex flex-col items-center">
-          <FlipUnitContainer digit={String(value).padStart(2, '0')} shuffle={flip[unit as keyof typeof flip]} unit={unit} />
-        </div>
-      ))}
+      <FlipUnitContainer digit={String(timeLeft.days).padStart(2, '0')} shuffle={flip.days} unit="days" />
+      <FlipUnitContainer digit={String(timeLeft.hours).padStart(2, '0')} shuffle={flip.hours} unit="hours" />
+      <FlipUnitContainer digit={String(timeLeft.minutes).padStart(2, '0')} shuffle={flip.minutes} unit="minutes" />
+      <FlipUnitContainer digit={String(timeLeft.seconds).padStart(2, '0')} shuffle={flip.seconds} unit="seconds" />
     </div>
   );
 };
