@@ -19,7 +19,6 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { AnimatedCard } from '@/components/animated-card';
-import CountUp from '@/components/count-up';
 
 const faqItems = [
   {
@@ -109,7 +108,7 @@ export default function RevUpPage() {
             <CardHeader>
               <Users className="h-12 w-12 mx-auto text-accent mb-4" />
               <CardTitle className="text-5xl font-extrabold text-primary">
-                <CountUp to={70} duration={2} />+
+                70+
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -122,7 +121,7 @@ export default function RevUpPage() {
             <CardHeader>
               <Briefcase className="h-12 w-12 mx-auto text-accent mb-4" />
               <CardTitle className="text-5xl font-extrabold text-primary">
-                <CountUp to={25} duration={2} />+
+                25+
               </CardTitle>
             </CardHeader>
             <CardContent>
