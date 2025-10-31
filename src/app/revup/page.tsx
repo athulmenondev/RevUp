@@ -39,6 +39,33 @@ const faqItems = [
   },
 ];
 
+const highlightCards = [
+  {
+    icon: Wrench,
+    title: 'Technical Workshops',
+    description:
+      'A blend of technical workshops to provide hands-on exposure to cutting-edge technologies shaping the future of mobility.',
+  },
+  {
+    icon: UserCheck,
+    title: 'Expert Talk Sessions',
+    description:
+      'Engage directly with industry experts and explore advancements in electric vehicles and intelligent transport systems.',
+  },
+  {
+    icon: Building2,
+    title: 'Industrial Visits',
+    description:
+      'Gain practical exposure through field visits to leading organizations in the vehicular domain.',
+  },
+  {
+    icon: PartyPopper,
+    title: 'Cultural Evenings & Networking',
+    description:
+      'Connect, share ideas, and build networks in a vibrant celebration of creativity and collaboration.',
+  },
+];
+
 export default function RevUpPage() {
   return (
     <div className="container mx-auto px-4 py-8 md:py-12">
@@ -109,62 +136,30 @@ export default function RevUpPage() {
           RevUp Event Highlights
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3">
-                <Wrench className="h-6 w-6 text-accent" />
-                Technical Workshops
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                A blend of technical workshops to provide hands-on exposure to
-                cutting-edge technologies shaping the future of mobility.
-              </p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3">
-                <UserCheck className="h-6 w-6 text-accent" />
-                Expert Talk Sessions
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                Engage directly with industry experts and explore advancements
-                in electric vehicles and intelligent transport systems.
-              </p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3">
-                <Building2 className="h-6 w-6 text-accent" />
-                Industrial Visits
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                Gain practical exposure through field visits to leading
-                organizations in the vehicular domain.
-              </p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3">
-                <PartyPopper className="h-6 w-6 text-accent" />
-                Cultural Evenings & Networking
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                Connect, share ideas, and build networks in a vibrant
-                celebration of creativity and collaboration.
-              </p>
-            </CardContent>
-          </Card>
+          {highlightCards.map((card, index) => {
+            const Icon = card.icon;
+            return (
+              <div
+                key={card.title}
+                className="animate-fade-in-up"
+                style={{ animationDelay: `${index * 150}ms` }}
+              >
+                <Card className="h-full">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-3">
+                      <Icon className="h-6 w-6 text-accent" />
+                      {card.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground">
+                      {card.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+            );
+          })}
         </div>
       </section>
 
