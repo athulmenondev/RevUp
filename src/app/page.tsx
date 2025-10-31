@@ -24,7 +24,6 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { CountdownTimer } from "@/components/countdown-timer";
 import { SponsorCarousel } from "@/components/sponsor-carousel";
-import FloatingGraphics from "@/components/floating-graphics";
 
 export default function Home() {
   const revUpDate = "2025-12-06T00:00:00";
@@ -32,7 +31,6 @@ export default function Home() {
   return (
     <div className="container mx-auto px-4 py-8 md:py-12">
       <section id="home" className="relative text-center mb-12 md:mb-16 pt-16 overflow-hidden rounded-2xl">
-        <FloatingGraphics />
         <div className="relative z-10">
           <div className="inline-block p-4 rounded-full mb-4">
             <RevUpLogo className="h-24 w-auto" />
