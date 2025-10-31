@@ -6,8 +6,8 @@ import { Footer } from '@/components/footer';
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: 'IEEE Event Hub',
-  description: 'Your gateway to IEEE events at our college.',
+  title: 'EEE VTS SBC NSSCE',
+  description: 'Your gateway to EEE VTS SBC NSSCE events.',
 };
 
 export default function RootLayout({
@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full">
+    <html lang="en" className="h-full dark">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

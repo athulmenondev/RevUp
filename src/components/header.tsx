@@ -1,4 +1,4 @@
-import { Triangle } from "lucide-react";
+import { Car } from "lucide-react";
 import Link from "next/link";
 
 export function Header() {
@@ -6,9 +6,9 @@ export function Header() {
     <header className="bg-primary text-primary-foreground shadow-md">
       <div className="container mx-auto flex items-center justify-between p-4">
         <Link href="/" className="flex items-center gap-2">
-          <Triangle className="h-8 w-8 text-accent fill-accent" />
+          <Car className="h-8 w-8 text-accent fill-accent" />
           <span className="text-xl font-bold tracking-tight font-headline">
-            IEEE Event Hub
+            EEE VTS SBC NSSCE
           </span>
         </Link>
         <nav>

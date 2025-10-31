@@ -6,7 +6,7 @@ export function Footer() {
     <footer className="bg-card mt-12 border-t">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between p-6 gap-4">
         <p className="text-sm text-muted-foreground">
-          &copy; {year} IEEE Student Branch. All rights reserved.
+          &copy; {year} EEE VTS SBC NSSCE. All rights reserved.
         </p>
         <div className="flex items-center gap-4">
           <a href="#" aria-label="Twitter" className="text-muted-foreground hover:text-primary transition-colors">

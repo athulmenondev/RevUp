@@ -1,19 +1,19 @@
 import { EventCard } from "@/components/event-card";
 import { events } from "@/lib/events";
-import { Calendar, Cpu, Zap } from "lucide-react";
+import { Calendar, Car, Zap } from "lucide-react";
 
 export default function Home() {
   return (
     <div className="container mx-auto px-4 py-8 md:py-12">
       <section className="text-center mb-12 md:mb-16">
         <div className="inline-block bg-primary text-primary-foreground p-4 rounded-full mb-4 shadow-lg">
-          <Cpu className="h-10 w-10" />
+          <Car className="h-10 w-10" />
         </div>
         <h1 className="text-4xl md:text-5xl font-extrabold text-primary tracking-tight mb-4 font-headline">
-          IEEE Event Hub
+          EEE VTS SBC NSSCE
         </h1>
         <p className="max-w-3xl mx-auto text-lg md:text-xl text-foreground/80">
-          Discover, learn, and connect at exclusive IEEE events. Dive into the world of technology, innovation, and professional growth.
+          Discover, learn, and connect at exclusive EEE VTS SBC NSSCE events. Dive into the world of technology, innovation, and professional growth.
         </p>
       </section>
 
