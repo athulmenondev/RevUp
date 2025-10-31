@@ -31,37 +31,49 @@ type EventData = typeof day1Events | typeof day2Events;
 // --- SVG Components for Car Parts ---
 
 const CarChassis = () => (
-  <path d="M50 120 h20 l10 -20 h160 l10 20 h20 v10 h-220z" className="fill-muted-foreground/20 stroke-border stroke-2" />
+    <path d="M50 120 h20 l10 -20 h160 l10 20 h20 v10 h-220z" className="fill-muted-foreground/20 stroke-border stroke-2" />
 );
 
 const CarEngine = () => (
-  <g transform="translate(90, 95)">
-    <rect width="60" height="25" className="fill-primary/50" />
-    <rect y="5" width="10" height="15" className="fill-primary/30" />
-    <rect x="50" y="5" width="10" height="15" className="fill-primary/30" />
-  </g>
+    <g transform="translate(90, 95)" className="fill-primary/50 stroke-primary/70">
+        <rect width="60" height="25" rx="2" />
+        <path d="M5 5 v15 h-5 M55 5 v15 h5 M10 0 v-5 h40 v5 M15 25 v5 h30 v-5" strokeWidth="2" strokeLinecap="round" />
+    </g>
 );
 
 const CarWheels = () => (
   <>
-    <circle cx="85" cy="130" r="15" className="fill-primary/80 stroke-primary/50 stroke-2" />
-    <circle cx="235" cy="130" r="15" className="fill-primary/80 stroke-primary/50 stroke-2" />
+    <g transform="translate(85, 130)" className="fill-primary/80 stroke-primary/50 stroke-2">
+      <circle cx="0" cy="0" r="15" />
+      <circle cx="0" cy="0" r="8" className="fill-background/80" />
+      <path d="M0 -6 v-3 M0 6 v3 M-6 0 h-3 M6 0 h3" className="stroke-primary/50" strokeWidth="1.5" strokeLinecap="round" />
+    </g>
+    <g transform="translate(235, 130)" className="fill-primary/80 stroke-primary/50 stroke-2">
+      <circle cx="0" cy="0" r="15" />
+      <circle cx="0" cy="0" r="8" className="fill-background/80" />
+      <path d="M0 -6 v-3 M0 6 v3 M-6 0 h-3 M6 0 h3" className="stroke-primary/50" strokeWidth="1.5" strokeLinecap="round" />
+    </g>
   </>
 );
 
 const CarDoors = () => (
-    <g transform="translate(155, 75)">
-        <path d="M0 0 h50 l10 25 h-50 l-10 -25z" className="fill-primary/40 stroke-primary/20 stroke-1" />
-        <rect x="5" y="5" width="15" height="10" className="fill-background/50" />
+    <g transform="translate(130, 70)" className="fill-primary/40 stroke-primary/60 stroke-1">
+        <path d="M0 50 L 0 25 q 5 -5 10 -5 h30 l15 30 h-55z" />
+        <path d="M50 50 L 50 20 h35 l15 30 h-50z" />
+        <path d="M10 42 L 10 28 h30 l10 14" className="fill-background/30 stroke-none" />
+        <path d="M55 42 L 55 28 h30 l10 14" className="fill-background/30 stroke-none" />
     </g>
 );
 
 const CarPaint = () => (
-    <path d="M70 120 l10 -20 h160 l10 20z M75 100 l10 -25 h150 l10 25z" className="fill-accent/50"/>
+    <path d="M70 120 l-5 -15 l15 -30 h150 l15 30 l-5 15 a20,20 0 0,1 -10,0" className="fill-accent/50 stroke-accent/80 stroke-1"/>
 );
 
 const FuelIcon = () => (
-    <path d="M180 100 h 10 v 20 h -10 z" className="fill-green-500/80" />
+    <g transform="translate(180 100)" className="stroke-green-500 fill-none" strokeWidth="2">
+        <rect x="0" y="5" width="15" height="20" rx="2" className="fill-green-500/20" />
+        <path d="M15 12 h5 q 5 0 5 5 v3" />
+    </g>
 );
 
 
@@ -70,22 +82,26 @@ const EVChassis = () => (
 );
 
 const EVBattery = () => (
-    <rect x="110" y="115" width="100" height="15" className="fill-blue-500/50 stroke-blue-400" />
+    <rect x="100" y="118" width="120" height="12" rx="2" className="fill-blue-500/50 stroke-blue-400" />
 );
 
 const EVSpoiler = () => (
-    <path d="M250 90 h20 l-10 -15 h-15z" className="fill-accent/60" />
+    <path d="M250 90 c 5 -10 15 -15 25 -15 h5 l-5 15 h-25" className="fill-accent/60 stroke-accent/80" />
 );
 
 const EVLights = () => (
     <>
-        <path d="M55 110 l10 -5 h10 l-10 5z" className="fill-cyan-400/80" />
-        <path d="M255 110 l-10 -5 h-10 l10 5z" className="fill-red-500/80" />
+        <path d="M55 115 h-5 l15 -10 h10 z" className="fill-cyan-400/80" />
+        <path d="M255 115 h5 l-15 -10 h-10 z" className="fill-red-500/80" />
     </>
 );
 
 const ChargeIcon = () => (
-    <path d="M160 100 l-10 15 h10 l-10 15" className="stroke-yellow-400 stroke-2 fill-none" />
+    <g transform="translate(155, 100)" className="stroke-yellow-400 fill-yellow-400/20" strokeWidth="2" strokeLinecap="round">
+        <path d="M0 5 h10 v20 h-10z" />
+        <path d="M10 8 h3 M10 12 h5 M10 16 h3 M10 20 h5" />
+        <path d="M15 15 l10 0" />
+    </g>
 )
 
 
