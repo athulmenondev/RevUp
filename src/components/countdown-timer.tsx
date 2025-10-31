@@ -16,7 +16,7 @@ interface TimeLeft {
 
 const AnimatedCard = ({ animation, digit }: { animation: string; digit: string }) => {
   return (
-    <div className={cn("relative h-full w-full", animation)}>
+    <div className={cn("absolute inset-0 z-10", animation === 'fold' ? 'fold' : 'unfold')}>
       <div className="absolute inset-0">
         <div className="flex h-full w-full items-center justify-center bg-card text-4xl md:text-6xl font-bold text-accent rounded-lg shadow-lg">
           {digit}
@@ -44,29 +44,37 @@ const StaticCard = ({ position, digit }: { position: 'upper' | 'lower'; digit: s
   );
 };
 
-const FlipUnitContainer = ({ digit, shuffle, unit }: { digit: string; shuffle: boolean; unit: string }) => {
-  let currentDigit: string | number = +digit;
-  let previousDigit: string | number = +digit + 1;
+const FlipUnitContainer = ({ digit, shuffle, unit }: { digit: number; shuffle: boolean; unit: string }) => {
+  let currentDigit = digit;
+  let previousDigit = digit + 1;
 
-  if (unit !== 'hours') {
-    previousDigit = previousDigit === 60 ? 59 : previousDigit;
-  } else {
-    previousDigit = previousDigit === 24 ? 23 : previousDigit;
+  if (unit === 'hours') {
+    if (previousDigit === 24) previousDigit = 0;
+  } else if (unit === 'days') {
+    // Days don't cycle like this
   }
+  else {
+    if (previousDigit === 60) previousDigit = 0;
+  }
+  
+  const currentDigitStr = String(currentDigit).padStart(2, '0');
+  const previousDigitStr = String(previousDigit).padStart(2, '0');
 
-  const digit1 = shuffle ? previousDigit : currentDigit;
-  const digit2 = !shuffle ? previousDigit : currentDigit;
+  const digit1 = shuffle ? previousDigitStr : currentDigitStr;
+  const digit2 = !shuffle ? previousDigitStr : currentDigitStr;
 
   const animation1 = shuffle ? 'fold' : 'unfold';
   const animation2 = !shuffle ? 'fold' : 'unfold';
 
   return (
-    <div className="relative h-24 w-24 md:h-32 md:w-32">
-      <StaticCard position="upper" digit={String(currentDigit).padStart(2, '0')} />
-      <StaticCard position="lower" digit={String(previousDigit).padStart(2, '0')} />
-      <AnimatedCard digit={String(digit1).padStart(2, '0')} animation={animation1} />
-      <AnimatedCard digit={String(digit2).padStart(2, '0')} animation={animation2} />
-      <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-sm uppercase text-muted-foreground tracking-widest">
+    <div className="relative flex flex-col h-24 w-24 md:h-32 md:w-32">
+      <div className="relative w-full h-full">
+        <StaticCard position="upper" digit={currentDigitStr} />
+        <StaticCard position="lower" digit={previousDigitStr} />
+        <AnimatedCard digit={digit1} animation={animation1} />
+        <AnimatedCard digit={digit2} animation={animation2} />
+      </div>
+      <div className="mt-2 text-sm uppercase text-muted-foreground tracking-widest text-center">
         {unit}
       </div>
     </div>
@@ -87,39 +95,49 @@ export const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
     return { days: 0, hours: 0, minutes: 0, seconds: 0 };
   };
 
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   
-  // To trigger animations
-  const [flip, setFlip] = useState({
-    days: false,
-    hours: false,
-    minutes: false,
-    seconds: true,
-  });
+  useEffect(() => {
+    // Set initial time on client to avoid hydration mismatch
+    setTimeLeft(calculateTimeLeft());
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      const newTimeLeft = calculateTimeLeft();
-      
-      setFlip({
-          days: timeLeft.days !== newTimeLeft.days,
-          hours: timeLeft.hours !== newTimeLeft.hours,
-          minutes: timeLeft.minutes !== newTimeLeft.minutes,
-          seconds: timeLeft.seconds !== newTimeLeft.seconds,
-      });
-
-      setTimeLeft(newTimeLeft);
+      setTimeLeft(calculateTimeLeft());
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [targetDate, timeLeft]);
+  }, []);
+
+  const { days, hours, minutes, seconds } = timeLeft;
+  const [prevSeconds, setPrevSeconds] = useState(seconds);
+
+  useEffect(() => {
+      setPrevSeconds(seconds);
+  }, [seconds]);
+
+  const flipSeconds = seconds !== prevSeconds;
+  
+  const [prevMinutes, setPrevMinutes] = useState(minutes);
+  useEffect(() => { setPrevMinutes(minutes); }, [minutes]);
+  const flipMinutes = minutes !== prevMinutes;
+  
+  const [prevHours, setPrevHours] = useState(hours);
+  useEffect(() => { setPrevHours(hours); }, [hours]);
+  const flipHours = hours !== prevHours;
+  
+  const [prevDays, setPrevDays] = useState(days);
+  useEffect(() => { setPrevDays(days); }, [days]);
+  const flipDays = days !== prevDays;
+
 
   return (
-    <div className="flex justify-center gap-4 md:gap-8 pb-8">
-      <FlipUnitContainer digit={String(timeLeft.days).padStart(2, '0')} shuffle={flip.days} unit="days" />
-      <FlipUnitContainer digit={String(timeLeft.hours).padStart(2, '0')} shuffle={flip.hours} unit="hours" />
-      <FlipUnitContainer digit={String(timeLeft.minutes).padStart(2, '0')} shuffle={flip.minutes} unit="minutes" />
-      <FlipUnitContainer digit={String(timeLeft.seconds).padStart(2, '0')} shuffle={flip.seconds} unit="seconds" />
+    <div className="flex justify-center gap-4 md:gap-8 pb-8 flex-wrap">
+      <FlipUnitContainer digit={days} shuffle={flipDays} unit="days" />
+      <FlipUnitContainer digit={hours} shuffle={flipHours} unit="hours" />
+      <FlipUnitContainer digit={minutes} shuffle={flipMinutes} unit="minutes" />
+      <FlipUnitContainer digit={seconds} shuffle={flipSeconds} unit="seconds" />
     </div>
   );
 };
