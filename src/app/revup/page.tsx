@@ -6,9 +6,38 @@ import {
   Wrench,
   Users,
   Briefcase,
+  HelpCircle,
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { RegistrationDialog } from '@/components/registration-dialog';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
+
+const faqItems = [
+  {
+    question: 'Who is eligible to participate in RevUp?',
+    answer:
+      'RevUp is open to all university students, professionals, and technology enthusiasts who have a passion for vehicular technology, electric mobility, and intelligent transportation systems.',
+  },
+  {
+    question: 'What is the registration fee for the event?',
+    answer: 'Registration details will be announced soon. Stay tuned!',
+  },
+  {
+    question:
+      'Will accommodation be provided for out-station participants?',
+    answer:
+      'We will provide a list of recommended nearby accommodations. Please note that accommodation is not included in the registration fee.',
+  },
+  {
+    question: 'Will food be provided during the event?',
+    answer: 'Yes, lunch and refreshments will be provided on both days of the event.',
+  },
+];
 
 export default function RevUpPage() {
   return (
@@ -138,6 +167,26 @@ export default function RevUpPage() {
           </Card>
         </div>
       </section>
+
+      <section id="faq" className="mt-16 md:mt-24">
+        <h2 className="text-3xl font-bold text-primary mb-8 text-center font-headline flex items-center justify-center gap-3">
+          <HelpCircle className="h-8 w-8 text-accent" />
+          Frequently Asked Questions
+        </h2>
+        <Accordion type="single" collapsible className="w-full max-w-3xl mx-auto">
+          {faqItems.map((item, index) => (
+            <AccordionItem value={`item-${index}`} key={index}>
+              <AccordionTrigger className="text-left text-lg font-semibold hover:no-underline">
+                {item.question}
+              </AccordionTrigger>
+              <AccordionContent className="text-base text-muted-foreground pt-2">
+                {item.answer}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </section>
+      
       <section id="register" className="mt-16 md:mt-24 text-center">
         <h2 className="text-3xl font-bold text-primary mb-4 font-headline">Ready to RevUp?</h2>
         <p className="text-lg text-foreground/80 mb-8 max-w-2xl mx-auto">
