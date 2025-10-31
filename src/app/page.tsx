@@ -21,8 +21,11 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { CountdownTimer } from "@/components/countdown-timer";
 
 export default function Home() {
+  const revUpDate = "2025-12-06T00:00:00";
+  
   return (
     <div className="container mx-auto px-4 py-8 md:py-12">
       <section id="home" className="text-center mb-12 md:mb-16 pt-16">
@@ -43,6 +46,13 @@ export default function Home() {
         <Button size="lg" asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
           <Link href="/revup">Register for RevUp</Link>
         </Button>
+      </section>
+
+      <section id="countdown" className="mb-16 md:mb-24">
+        <h2 className="text-3xl font-bold text-primary mb-8 text-center font-headline">
+          Event Starts In
+        </h2>
+        <CountdownTimer targetDate={revUpDate} />
       </section>
 
       <section
