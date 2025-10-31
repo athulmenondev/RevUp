@@ -124,6 +124,35 @@ export default function Home() {
           empowering students to become pioneers in the field.
         </p>
       </section>
+
+      <section id="team" className="mt-16 md:mt-24 text-center">
+        <h2 className="text-3xl font-bold text-primary mb-8 font-headline">
+          Meet the Organizing Committee
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <Card className="bg-card/80">
+            <CardContent className="pt-6 flex flex-col items-center">
+              <div className="bg-muted rounded-full h-24 w-24 mb-4"></div>
+              <h3 className="text-xl font-bold text-primary">Jane Doe</h3>
+              <p className="text-muted-foreground">Chapter Chair</p>
+            </CardContent>
+          </Card>
+          <Card className="bg-card/80">
+            <CardContent className="pt-6 flex flex-col items-center">
+              <div className="bg-muted rounded-full h-24 w-24 mb-4"></div>
+              <h3 className="text-xl font-bold text-primary">John Smith</h3>
+              <p className="text-muted-foreground">Event Lead</p>
+            </CardContent>
+          </Card>
+          <Card className="bg-card/80">
+            <CardContent className="pt-6 flex flex-col items-center">
+              <div className="bg-muted rounded-full h-24 w-24 mb-4"></div>
+              <h3 className="text-xl font-bold text-primary">Priya Patel</h3>
+              <p className="text-muted-foreground">Sponsorship Head</p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
     </div>
   );
 }
