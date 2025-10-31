@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { useInView, useMotionValue, useSpring } from 'motion/react';
+import { useEffect, useRef, useState } from 'react';
+import { inView, useMotionValue, useSpring } from 'motion';
 
 interface CountUpProps {
   to: number;
@@ -29,6 +29,7 @@ export default function CountUp({
   onEnd
 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
+  const [isInView, setIsInView] = useState(false);
   const motionValue = useMotionValue(direction === 'down' ? to : from);
 
   const damping = 20 + 40 * (1 / duration);
@@ -38,8 +39,6 @@ export default function CountUp({
     damping,
     stiffness
   });
-
-  const isInView = useInView(ref, { once: true, margin: '0px' });
 
   const getDecimalPlaces = (num: number): number => {
     const str = num.toString();
@@ -59,6 +58,18 @@ export default function CountUp({
       ref.current.textContent = String(direction === 'down' ? to : from);
     }
   }, [from, to, direction]);
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
+    const stop = inView(element, () => {
+      setIsInView(true);
+      return () => setIsInView(false); // Optional: stop animation when out of view
+    }, { margin: "0px" });
+
+    return () => stop();
+  }, []);
 
   useEffect(() => {
     if (isInView && startWhen) {
