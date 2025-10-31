@@ -22,6 +22,7 @@ import {
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { CountdownTimer } from "@/components/countdown-timer";
+import { SponsorCarousel } from "@/components/sponsor-carousel";
 
 export default function Home() {
   const revUpDate = "2025-12-06T00:00:00";
@@ -152,6 +153,11 @@ export default function Home() {
             </CardContent>
           </Card>
         </div>
+      </section>
+
+      <section id="sponsors" className="mt-16 md:mt-24 text-center">
+        <h2 className="text-3xl font-bold text-primary mb-8 font-headline">Our Valued Sponsors</h2>
+        <SponsorCarousel />
       </section>
     </div>
   );
