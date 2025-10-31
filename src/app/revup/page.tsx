@@ -20,7 +20,9 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { AnimatedCard } from '@/components/animated-card';
-import { GpsRoadmap } from '@/components/gps-roadmap';
+import { AssemblyLine } from '@/components/assembly-line';
+import '../assembly-line.css';
+
 
 const faqItems = [
   {
@@ -166,9 +168,9 @@ export default function RevUpPage() {
       <section id="schedule" className="mt-16 md:mt-24">
         <h2 className="text-3xl font-bold text-primary mb-8 text-center font-headline flex items-center justify-center gap-3">
           <Map className="h-8 w-8 text-accent" />
-          Your RevUp Roadmap
+          The RevUp Assembly Line
         </h2>
-        <GpsRoadmap />
+        <AssemblyLine />
       </section>
 
       <section id="faq" className="mt-16 md:mt-24">

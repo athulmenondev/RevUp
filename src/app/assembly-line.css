@@ -1,0 +1,58 @@
+.part {
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/* Initial States (off-screen) */
+.part-engine { transform: translateX(-50px); }
+.part-wheels { transform: translateY(50px); }
+.part-doors { transform: translateX(50px); }
+.part-paint { transform: scale(0.5); }
+.part-fuel { transform: translateY(-30px) scale(0); }
+
+.part-battery { transform: translateY(50px); }
+.part-spoiler { transform: translateX(30px) scale(0.5); }
+.part-lights { transform: scale(0); }
+.part-charge {  transform: translateY(-30px) scale(0); }
+
+
+/* Final States (in-place) */
+.car-assembly[data-step='1'] .part-engine,
+.car-assembly[data-step='2'] .part-engine,
+.car-assembly[data-step='3'] .part-engine,
+.car-assembly[data-step='4'] .part-engine,
+.car-assembly[data-step='5'] .part-engine,
+.car-assembly[data-step='2'] .part-wheels,
+.car-assembly[data-step='3'] .part-wheels,
+.car-assembly[data-step='4'] .part-wheels,
+.car-assembly[data-step='5'] .part-wheels,
+.car-assembly[data-step='3'] .part-fuel,
+.car-assembly-step[data-step='4'] .part-fuel,
+.car-assembly[data-step='5'] .part-fuel,
+.car-assembly[data-step='4'] .part-doors,
+.car-assembly[data-step='5'] .part-doors,
+.car-assembly[data-step='5'] .part-paint,
+.ev-assembly[data-step='1'] .part-battery,
+.ev-assembly[data-step='2'] .part-battery,
+.ev-assembly[data-step='3'] .part-battery,
+.ev-assembly[data-step='4' ] .part-battery,
+.ev-assembly[data-step='2'] .part-charge,
+.ev-assembly[data-step='3'] .part-charge,
+.ev-assembly[data-step='4'] .part-charge,
+.ev-assembly[data-step='3'] .part-spoiler,
+.ev-assembly[data-step='4'] .part-spoiler,
+.ev-assembly[data-step='4'] .part-lights {
+    transform: translate(0, 0) scale(1);
+}
+
+.animate-scroll {
+    animation: scroll 10s linear infinite;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
