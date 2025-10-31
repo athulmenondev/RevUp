@@ -93,16 +93,11 @@ export default {
             transform: 'translateX(-50%)',
           },
         },
-        'fade-in-fast': {
-          from: { opacity: '0.5' },
-          to: { opacity: '1' },
-        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'scroll': 'scroll 40s linear infinite',
-        'fade-in-fast': 'fade-in-fast 0.3s ease-out forwards',
       },
     },
   },
