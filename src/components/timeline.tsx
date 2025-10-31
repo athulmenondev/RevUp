@@ -119,8 +119,8 @@ const TimelineCard = ({
         )}
         style={{ animationDelay: `${index * 100}ms` }}
       >
-        <div className="flex items-center gap-4">
-          <div className="md:hidden flex-shrink-0 w-10 h-10 bg-accent text-accent-foreground rounded-full flex items-center justify-center">
+        <div className="flex items-center">
+          <div className="md:hidden flex-shrink-0 w-10 h-10 bg-accent text-accent-foreground rounded-full flex items-center justify-center mr-4">
             <Icon className="w-5 h-5" />
           </div>
           <div>
