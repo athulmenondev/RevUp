@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Card,
   CardContent,
@@ -15,6 +17,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { AnimatedCard } from "@/components/animated-card";
 
 const partnershipTiers = [
   {
@@ -84,6 +87,25 @@ const allFeatures = [
   "Exclusive stall space for brand promotion",
 ];
 
+const whySponsorItems = [
+    {
+        title: "Enhance Brand Visibility",
+        description: "Gain wide exposure among hundreds of students, faculty, professionals, and industry leaders through event branding, digital promotions, and media coverage.",
+    },
+    {
+        title: "Engage Future Talent",
+        description: "Interact directly with aspiring engineers and innovators who represent the next generation of technical leaders.",
+    },
+    {
+        title: "Strengthen Industry-Academia Collaboration",
+        description: "Support initiatives that encourage practical learning, research, and innovation in emerging technologies like electric vehicles, automation, and sustainable transport.",
+    },
+    {
+        title: "Showcase Corporate Social Responsibility",
+        description: "Align your brand with a student-led initiative that promotes education, technology, and sustainability - values that shape the future of mobility.",
+    },
+]
+
 export default function SponsorsPage() {
   return (
     <div className="container mx-auto px-4 py-8 md:py-12 pt-24">
@@ -103,45 +125,18 @@ export default function SponsorsPage() {
           sustainable tomorrow.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left max-w-4xl mx-auto">
-          <div className="bg-card p-6 rounded-lg shadow-sm">
-            <h3 className="text-2xl font-bold text-primary mb-4">
-              Enhance Brand Visibility
-            </h3>
-            <p className="text-foreground/80">
-              Gain wide exposure among hundreds of students, faculty,
-              professionals, and industry leaders through event branding,
-              digital promotions, and media coverage.
-            </p>
-          </div>
-          <div className="bg-card p-6 rounded-lg shadow-sm">
-            <h3 className="text-2xl font-bold text-primary mb-4">
-              Engage Future Talent
-            </h3>
-            <p className="text-foreground/80">
-              Interact directly with aspiring engineers and innovators who
-              represent the next generation of technical leaders.
-            </p>
-          </div>
-          <div className="bg-card p-6 rounded-lg shadow-sm">
-            <h3 className="text-2xl font-bold text-primary mb-4">
-              Strengthen Industry-Academia Collaboration
-            </h3>
-            <p className="text-foreground/80">
-              Support initiatives that encourage practical learning, research,
-              and innovation in emerging technologies like electric vehicles,
-              automation, and sustainable transport.
-            </p>
-          </div>
-          <div className="bg-card p-6 rounded-lg shadow-sm">
-            <h3 className="text-2xl font-bold text-primary mb-4">
-              Showcase Corporate Social Responsibility
-            </h3>
-            <p className="text-foreground/80">
-              Align your brand with a student-led initiative that promotes
-              education, technology, and sustainability - values that shape the
-              future of mobility.
-            </p>
-          </div>
+          {whySponsorItems.map((item, index) => (
+            <AnimatedCard key={item.title} index={index}>
+              <div className="bg-card p-6 rounded-lg shadow-sm h-full">
+                <h3 className="text-2xl font-bold text-primary mb-4">
+                  {item.title}
+                </h3>
+                <p className="text-foreground/80">
+                  {item.description}
+                </p>
+              </div>
+            </AnimatedCard>
+          ))}
         </div>
       </section>
 
