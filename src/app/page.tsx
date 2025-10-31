@@ -1,4 +1,5 @@
 
+
 import {
   Calendar,
   Zap,
@@ -23,30 +24,34 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { CountdownTimer } from "@/components/countdown-timer";
 import { SponsorCarousel } from "@/components/sponsor-carousel";
+import FloatingGraphics from "@/components/floating-graphics";
 
 export default function Home() {
   const revUpDate = "2025-12-06T00:00:00";
   
   return (
     <div className="container mx-auto px-4 py-8 md:py-12">
-      <section id="home" className="text-center mb-12 md:mb-16 pt-16">
-        <div className="inline-block p-4 rounded-full mb-4">
-          <RevUpLogo className="h-24 w-auto" />
+      <section id="home" className="relative text-center mb-12 md:mb-16 pt-16 overflow-hidden rounded-2xl">
+        <FloatingGraphics />
+        <div className="relative z-10">
+          <div className="inline-block p-4 rounded-full mb-4">
+            <RevUpLogo className="h-24 w-auto" />
+          </div>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-primary tracking-tight mb-2 font-headline">
+            RevUp
+          </h1>
+          <p className="text-lg md:text-xl text-foreground/80 mb-4 font-semibold">
+            06 & 07 December 2025
+          </p>
+          <p className="max-w-3xl mx-auto text-lg md:text-xl text-foreground/80 mb-8">
+            Discover, learn, and connect at the flagship event of EEE VTS SBC NSSCE.
+            Dive into the world of technology, innovation, and professional
+            growth.
+          </p>
+          <Button size="lg" asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
+            <Link href="/revup">Register for RevUp</Link>
+          </Button>
         </div>
-        <h1 className="text-4xl md:text-5xl font-extrabold text-primary tracking-tight mb-2 font-headline">
-          RevUp
-        </h1>
-        <p className="text-lg md:text-xl text-foreground/80 mb-4 font-semibold">
-          06 & 07 December 2025
-        </p>
-        <p className="max-w-3xl mx-auto text-lg md:text-xl text-foreground/80 mb-8">
-          Discover, learn, and connect at the flagship event of EEE VTS SBC NSSCE.
-          Dive into the world of technology, innovation, and professional
-          growth.
-        </p>
-        <Button size="lg" asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
-          <Link href="/revup">Register for RevUp</Link>
-        </Button>
       </section>
 
       <section id="countdown" className="mb-16 md:mb-24">
