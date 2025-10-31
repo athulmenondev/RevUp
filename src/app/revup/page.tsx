@@ -8,6 +8,7 @@ import {
   Briefcase,
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { RegistrationDialog } from '@/components/registration-dialog';
 
 export default function RevUpPage() {
   return (
@@ -136,6 +137,13 @@ export default function RevUpPage() {
             </CardContent>
           </Card>
         </div>
+      </section>
+      <section id="register" className="mt-16 md:mt-24 text-center">
+        <h2 className="text-3xl font-bold text-primary mb-4 font-headline">Ready to RevUp?</h2>
+        <p className="text-lg text-foreground/80 mb-8 max-w-2xl mx-auto">
+          Secure your spot at RevUp and be part of the future of vehicular technology.
+        </p>
+        <RegistrationDialog eventTitle="RevUp" />
       </section>
     </div>
   );
