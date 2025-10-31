@@ -36,7 +36,7 @@ const VtsLogo = () => (
 
 export function Header() {
   return (
-    <header className="bg-card shadow-md border-b border-border">
+    <header className="bg-card shadow-md border-b border-border fixed w-full top-0 z-50">
       <div className="container mx-auto flex items-center justify-between p-4">
         <Link href="/" className="flex items-center gap-3">
           <VtsLogo />
@@ -44,8 +44,10 @@ export function Header() {
             SBC NSSCE
           </span>
         </Link>
-        <nav>
-          {/* Future navigation links can go here */}
+        <nav className="hidden md:flex gap-6">
+          <Link href="/#home" className="text-muted-foreground hover:text-primary transition-colors font-medium">Home</Link>
+          <Link href="/#events" className="text-muted-foreground hover:text-primary transition-colors font-medium">Events</Link>
+          <Link href="/#about" className="text-muted-foreground hover:text-primary transition-colors font-medium">About</Link>
         </nav>
       </div>
     </header>

@@ -6,7 +6,7 @@ import { RevUpLogo } from "@/components/revup-logo";
 export default function Home() {
   return (
     <div className="container mx-auto px-4 py-8 md:py-12">
-      <section className="text-center mb-12 md:mb-16">
+      <section id="home" className="text-center mb-12 md:mb-16 pt-16">
         <div className="inline-block bg-primary text-primary-foreground p-4 rounded-full mb-4 shadow-lg">
           <RevUpLogo className="h-24 w-48" />
         </div>
@@ -18,8 +18,8 @@ export default function Home() {
         </p>
       </section>
 
-      <section>
-        <h2 className="text-3xl font-bold text-primary mb-8 flex items-center gap-3 font-headline">
+      <section id="events">
+        <h2 className="text-3xl font-bold text-primary mb-8 flex items-center gap-3 font-headline pt-16">
           <Calendar className="h-8 w-8 text-accent" />
           Upcoming Events
         </h2>
@@ -30,8 +30,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mt-16 md:mt-24 text-center p-8 bg-card rounded-2xl shadow-md">
-        <h2 className="text-3xl font-bold text-primary mb-4 font-headline flex items-center justify-center gap-3">
+      <section id="about" className="mt-16 md:mt-24 text-center p-8 bg-card rounded-2xl shadow-md">
+        <h2 className="text-3xl font-bold text-primary mb-4 font-headline flex items-center justify-center gap-3 pt-16">
             <Zap className="h-8 w-8 text-accent" />
             Why Join?
         </h2>
