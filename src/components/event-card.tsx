@@ -18,7 +18,7 @@ interface EventCardProps {
 export function EventCard({ event }: EventCardProps) {
   return (
     <Link href={`/events/${event.id}`} className="group block">
-      <Card className="h-full flex flex-col transition-all duration-300 ease-in-out group-hover:shadow-xl group-hover:scale-[1.02] group-hover:border-primary/50">
+      <Card className="h-full flex flex-col transition-all duration-300 ease-in-out group-hover:shadow-xl group-hover:scale-[1.03] group-hover:border-primary/50">
         <CardHeader>
           <CardTitle className="text-primary font-headline group-hover:text-primary/90 transition-colors">
             {event.title}

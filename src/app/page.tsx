@@ -131,21 +131,21 @@ export default function Home() {
           Meet the Organizing Committee
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          <Card className="bg-card/80">
+          <Card className="bg-card/80 transition-all duration-300 ease-in-out hover:scale-[1.03] hover:shadow-xl">
             <CardContent className="pt-6 flex flex-col items-center">
               <div className="bg-muted rounded-full h-24 w-24 mb-4"></div>
               <h3 className="text-xl font-bold text-primary">Jane Doe</h3>
               <p className="text-muted-foreground">Chapter Chair</p>
             </CardContent>
           </Card>
-          <Card className="bg-card/80">
+          <Card className="bg-card/80 transition-all duration-300 ease-in-out hover:scale-[1.03] hover:shadow-xl">
             <CardContent className="pt-6 flex flex-col items-center">
               <div className="bg-muted rounded-full h-24 w-24 mb-4"></div>
               <h3 className="text-xl font-bold text-primary">John Smith</h3>
               <p className="text-muted-foreground">Event Lead</p>
             </CardContent>
           </Card>
-          <Card className="bg-card/80">
+          <Card className="bg-card/80 transition-all duration-300 ease-in-out hover:scale-[1.03] hover:shadow-xl">
             <CardContent className="pt-6 flex flex-col items-center">
               <div className="bg-muted rounded-full h-24 w-24 mb-4"></div>
               <h3 className="text-xl font-bold text-primary">Priya Patel</h3>

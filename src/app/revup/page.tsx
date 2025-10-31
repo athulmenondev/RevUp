@@ -143,7 +143,7 @@ export default function RevUpPage() {
             const Icon = card.icon;
             return (
               <AnimatedCard key={card.title} index={index}>
-                <Card className="h-full">
+                <Card className="h-full transition-all duration-300 ease-in-out hover:scale-[1.03] hover:shadow-xl">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-3">
                       <Icon className="h-6 w-6 text-accent" />
