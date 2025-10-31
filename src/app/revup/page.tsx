@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Building2,
   PartyPopper,
@@ -16,6 +18,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import { AnimatedCard } from '@/components/animated-card';
 
 const faqItems = [
   {
@@ -139,11 +142,7 @@ export default function RevUpPage() {
           {highlightCards.map((card, index) => {
             const Icon = card.icon;
             return (
-              <div
-                key={card.title}
-                className="animate-fade-in-from-right"
-                style={{ animationDelay: `${index * 250}ms` }}
-              >
+              <AnimatedCard key={card.title} index={index}>
                 <Card className="h-full">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-3">
@@ -157,7 +156,7 @@ export default function RevUpPage() {
                     </p>
                   </CardContent>
                 </Card>
-              </div>
+              </AnimatedCard>
             );
           })}
         </div>

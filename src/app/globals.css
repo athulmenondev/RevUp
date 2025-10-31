@@ -86,20 +86,3 @@ body {
     @apply bg-background text-foreground;
   }
 }
-
-@layer utilities {
-  .animate-fade-in-from-right {
-    animation: fade-in-from-right 0.8s ease-in-out both;
-  }
-
-  @keyframes fade-in-from-right {
-    0% {
-      opacity: 0;
-      transform: translateX(30px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-}
