@@ -1,13 +1,14 @@
 import { EventCard } from "@/components/event-card";
 import { events } from "@/lib/events";
-import { Calendar, Car, Zap } from "lucide-react";
+import { Calendar, Zap } from "lucide-react";
+import { RevUpLogo } from "@/components/revup-logo";
 
 export default function Home() {
   return (
     <div className="container mx-auto px-4 py-8 md:py-12">
       <section className="text-center mb-12 md:mb-16">
         <div className="inline-block bg-primary text-primary-foreground p-4 rounded-full mb-4 shadow-lg">
-          <Car className="h-10 w-10" />
+          <RevUpLogo className="h-24 w-48" />
         </div>
         <h1 className="text-4xl md:text-5xl font-extrabold text-primary tracking-tight mb-4 font-headline">
           EEE VTS SBC NSSCE
