@@ -26,14 +26,17 @@ export default function Home() {
   return (
     <div className="container mx-auto px-4 py-8 md:py-12">
       <section id="home" className="text-center mb-12 md:mb-16 pt-16">
-        <div className="inline-block bg-primary text-primary-foreground p-4 rounded-full mb-4 shadow-lg">
-          <RevUpLogo className="h-24 w-48" />
+        <div className="inline-block p-4 rounded-full mb-4">
+          <RevUpLogo className="h-24 w-auto" />
         </div>
-        <h1 className="text-4xl md:text-5xl font-extrabold text-primary tracking-tight mb-4 font-headline">
-          EEE VTS SBC NSSCE
+        <h1 className="text-4xl md:text-5xl font-extrabold text-primary tracking-tight mb-2 font-headline">
+          RevUp
         </h1>
+        <p className="text-lg md:text-xl text-foreground/80 mb-4 font-semibold">
+          06 & 07 December 2025
+        </p>
         <p className="max-w-3xl mx-auto text-lg md:text-xl text-foreground/80 mb-8">
-          Discover, learn, and connect at exclusive EEE VTS SBC NSSCE events.
+          Discover, learn, and connect at the flagship event of EEE VTS SBC NSSCE.
           Dive into the world of technology, innovation, and professional
           growth.
         </p>
