@@ -4,7 +4,7 @@ export function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="bg-card mt-12 border-t">
-      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between p-6 gap-4">
+      <div className="container mx-auto flex flex-col items-center justify-center p-6 gap-4">
         <p className="text-sm text-muted-foreground">
           &copy; {year} EEE VTS SBC NSSCE. All rights reserved.
         </p>
