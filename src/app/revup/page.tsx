@@ -141,8 +141,8 @@ export default function RevUpPage() {
             return (
               <div
                 key={card.title}
-                className="animate-fade-in-up"
-                style={{ animationDelay: `${index * 150}ms` }}
+                className="animate-fade-in-from-right"
+                style={{ animationDelay: `${index * 250}ms` }}
               >
                 <Card className="h-full">
                   <CardHeader>
