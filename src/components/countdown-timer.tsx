@@ -1,65 +1,113 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { cn } from '@/lib/utils';
 
 interface CountdownTimerProps {
   targetDate: string;
 }
 
-export const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
-  const calculateTimeLeft = () => {
-    const difference = +new Date(targetDate) - +new Date();
-    let timeLeft = {
-      days: 0,
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
-    };
+interface TimeLeft {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+}
 
+const AnimatedCard = ({ animation, digit }: { animation: string; digit: string }) => {
+  return (
+    <div className={cn("relative h-full w-full", animation)}>
+      <div className="absolute inset-0">
+        <div className="flex h-full w-full items-center justify-center bg-card text-4xl font-bold text-accent rounded-lg shadow-lg">
+          {digit}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const StaticCard = ({ position, digit }: { position: 'upper' | 'lower'; digit: string }) => {
+  return (
+    <div className={cn(
+      "relative h-1/2 w-full overflow-hidden rounded-t-lg",
+      { 'rounded-b-lg rounded-t-none': position === 'lower' }
+    )}>
+      <div className="absolute inset-0">
+        <div className={cn(
+          "flex h-full w-full items-center justify-center bg-card text-4xl font-bold text-accent",
+          { 'items-end': position === 'upper', 'items-start': position === 'lower' }
+        )}>
+          {digit}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const FlipUnitContainer = ({ digit, shuffle, unit }: { digit: string; shuffle: boolean; unit: string }) => {
+  const previousDigit = String(parseInt(digit, 10) + 1).padStart(2, '0');
+
+  return (
+    <div className="relative h-16 w-16">
+      <StaticCard position="upper" digit={digit} />
+      <StaticCard position="lower" digit={previousDigit} />
+      <AnimatedCard digit={digit} animation={shuffle ? 'fold' : 'unfold'} />
+      <AnimatedCard digit={previousDigit} animation={shuffle ? 'unfold' : 'fold'} />
+      <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-sm uppercase text-muted-foreground">
+        {unit}
+      </div>
+    </div>
+  );
+};
+
+export const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
+  const calculateTimeLeft = (): TimeLeft => {
+    const difference = +new Date(targetDate) - +new Date();
     if (difference > 0) {
-      timeLeft = {
+      return {
         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
         hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
         minutes: Math.floor((difference / 1000 / 60) % 60),
         seconds: Math.floor((difference / 1000) % 60),
       };
     }
-
-    return timeLeft;
+    return { days: 0, hours: 0, minutes: 0, seconds: 0 };
   };
 
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
+  
+  // To trigger animations
+  const [flip, setFlip] = useState({
+    days: false,
+    hours: false,
+    minutes: false,
+    seconds: false,
+  });
 
   useEffect(() => {
-    // Set initial time left to avoid flash of 0s
-    setTimeLeft(calculateTimeLeft());
-
     const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
+      const newTimeLeft = calculateTimeLeft();
+      
+      setFlip({
+          days: timeLeft.days !== newTimeLeft.days,
+          hours: timeLeft.hours !== newTimeLeft.hours,
+          minutes: timeLeft.minutes !== newTimeLeft.minutes,
+          seconds: timeLeft.seconds !== newTimeLeft.seconds,
+      });
+
+      setTimeLeft(newTimeLeft);
     }, 1000);
 
     return () => clearInterval(timer);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [targetDate]);
-
-  const timerComponents = Object.keys(timeLeft).map((interval) => {
-    if (!timeLeft[interval as keyof typeof timeLeft] && timeLeft[interval as keyof typeof timeLeft] !== 0) {
-      return null;
-    }
-
-    return (
-      <div key={interval} className="flex flex-col items-center justify-center bg-card p-4 rounded-lg shadow-lg min-w-[80px]">
-        <span className="text-4xl font-bold text-accent">
-          {String(timeLeft[interval as keyof typeof timeLeft]).padStart(2, '0')}
-        </span>
-        <span className="text-sm uppercase text-muted-foreground">{interval}</span>
-      </div>
-    );
-  });
+  }, [targetDate, timeLeft]);
 
   return (
-    <div className="flex justify-center gap-4 md:gap-8">
-      {timerComponents.length ? timerComponents : <span>Time's up!</span>}
+    <div className="flex justify-center gap-4 md:gap-8 pb-8">
+      {Object.entries(timeLeft).map(([unit, value]) => (
+        <div key={unit} className="flex flex-col items-center">
+          <FlipUnitContainer digit={String(value).padStart(2, '0')} shuffle={flip[unit as keyof typeof flip]} unit={unit} />
+        </div>
+      ))}
     </div>
   );
 };

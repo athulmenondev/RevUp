@@ -85,4 +85,22 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+  .unfold {
+    transform-style: preserve-3d;
+    animation: unfold 0.6s ease-in-out forwards;
+  }
+  .fold {
+    transform-style: preserve-3d;
+    animation: fold 0.6s ease-in-out forwards;
+  }
+
+  @keyframes unfold {
+    0% { transform: rotateX(180deg); }
+    100% { transform: rotateX(0deg); }
+  }
+
+  @keyframes fold {
+    0% { transform: rotateX(0deg); }
+    100% { transform: rotateX(-180deg); }
+  }
 }
