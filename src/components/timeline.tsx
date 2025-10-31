@@ -114,7 +114,7 @@ const TimelineCard = ({
       </div>
       <div
         className={cn(
-          'w-full md:w-5/12 bg-card p-4 rounded-lg shadow-md transition-all duration-500',
+          'w-full md:w-[45%] bg-card p-4 rounded-lg shadow-md transition-all duration-500',
           'data-[state=inactive]:animate-slide-out-left'
         )}
         style={{ animationDelay: `${index * 100}ms` }}
