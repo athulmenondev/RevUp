@@ -12,7 +12,7 @@ import {
 import { RegistrationForm } from "./registration-form";
 import { useState } from "react";
 
-export function RegistrationDialog() {
+export function RegistrationDialog({ eventTitle }: { eventTitle: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -24,7 +24,7 @@ export function RegistrationDialog() {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle className="font-headline text-primary">Register for this Event</DialogTitle>
+          <DialogTitle className="font-headline text-primary">Register for {eventTitle}</DialogTitle>
           <DialogDescription>
             Fill out the form below to secure your spot.
           </DialogDescription>

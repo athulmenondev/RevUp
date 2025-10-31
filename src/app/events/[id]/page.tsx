@@ -160,7 +160,7 @@ export default function EventPage({ params }: EventPageProps) {
               </CardContent>
             </Card>
 
-            <RegistrationDialog />
+            <RegistrationDialog eventTitle={event.title} />
           </aside>
         </div>
       </div>

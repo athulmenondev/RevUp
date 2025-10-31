@@ -25,6 +25,18 @@
       "imageHint": "man professional"
     },
     {
+      "id": "speaker-5",
+      "description": "Portrait of Priya Sharma",
+      "imageUrl": "https://images.unsplash.com/photo-1554774853-719586f82d77?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "woman tech professional"
+    },
+    {
+      "id": "speaker-6",
+      "description": "Portrait of Ben Carter",
+      "imageUrl": "https://images.unsplash.com/photo-1530268729831-4b0b9e170218?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "man innovator"
+    },
+    {
       "id": "revup-logo",
       "description": "REVUP Event Logo",
       "imageUrl": "https://storage.googleapis.com/aai-web-samples/rev-up-logo.png",
