@@ -93,11 +93,33 @@ export default {
             transform: 'translateX(-50%)',
           },
         },
+        'slide-in-right': {
+          'from': {
+            opacity: '0',
+            transform: 'translateX(50px)',
+          },
+          'to': {
+            opacity: '1',
+            transform: 'translateX(0)',
+          },
+        },
+        'slide-out-left': {
+          'from': {
+            opacity: '1',
+            transform: 'translateX(0)',
+          },
+          'to': {
+            opacity: '0',
+            transform: 'translateX(-50px)',
+          },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'scroll': 'scroll 40s linear infinite',
+        'slide-in-right': 'slide-in-right 0.5s ease-out forwards',
+        'slide-out-left': 'slide-out-left 0.5s ease-in forwards',
       },
     },
   },

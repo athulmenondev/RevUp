@@ -9,6 +9,7 @@ import {
   Users,
   Briefcase,
   HelpCircle,
+  Map,
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { RegistrationDialog } from '@/components/registration-dialog';
@@ -19,6 +20,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { AnimatedCard } from '@/components/animated-card';
+import { Timeline } from '@/components/timeline';
 
 const faqItems = [
   {
@@ -91,7 +93,6 @@ export default function RevUpPage() {
           unique opportunity to engage directly with industry experts, explore
           advancements in electric vehicles, intelligent transport systems, and
           sustainable mobility, and gain practical exposure through field
-
           visits to leading organizations in the vehicular domain. RevUp stands
           as a symbol of the chapter's commitment to empowering young engineers
           to drive technological progress and steer toward a smarter,
@@ -160,6 +161,14 @@ export default function RevUpPage() {
             );
           })}
         </div>
+      </section>
+
+      <section id="schedule" className="mt-16 md:mt-24">
+        <h2 className="text-3xl font-bold text-primary mb-8 text-center font-headline flex items-center justify-center gap-3">
+          <Map className="h-8 w-8 text-accent" />
+          The RevUp Roadmap
+        </h2>
+        <Timeline />
       </section>
 
       <section id="faq" className="mt-16 md:mt-24">
