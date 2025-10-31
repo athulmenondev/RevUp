@@ -1,3 +1,4 @@
+
 import {
   Calendar,
   Zap,
@@ -8,6 +9,8 @@ import {
   UserCheck,
   Building2,
   PartyPopper,
+  Users,
+  Briefcase,
 } from "lucide-react";
 import { RevUpLogo } from "@/components/revup-logo";
 import {
@@ -51,6 +54,30 @@ export default function Home() {
           Our events are designed to foster learning and networking among tech
           enthusiasts. Gain insights from industry leaders, participate in
           hands-on workshops, and expand your professional network.
+        </p>
+      </section>
+
+      <section
+        id="about-chapter"
+        className="mt-16 md:mt-24 text-center p-8 bg-card rounded-2xl shadow-md"
+      >
+        <h2 className="text-3xl font-bold text-primary mb-4 font-headline flex items-center justify-center gap-3 pt-16">
+          About IEEE VTS SBC NSSCE
+        </h2>
+        <p className="max-w-3xl mx-auto text-lg text-foreground/80">
+          The IEEE Vehicular Technology Society Student Branch Chapter (VTS SBC) of NSS College of Engineering, Palakkad, is a dynamic platform dedicated to fostering innovation, research, and knowledge-sharing in the fields of vehicular technology, electric mobility, wireless communication, and intelligent transportation systems. Formed under the IEEE Student Branch NSSCE, the chapter aims to bridge the gap between academic learning and real-world applications by providing students with hands-on exposure to cutting-edge technologies. Through workshops, expert talks, and collaborative projects, we empower students to explore autonomous vehicles, electric and hybrid systems, and sustainable transport solutions. Our vision is 'Engineering Smarter Mobility for a Connected Future,' aligning with IEEE's global mission of advancing technology for humanity.
+        </p>
+      </section>
+
+      <section
+        id="about-sb"
+        className="mt-16 md:mt-24 text-center p-8 bg-card rounded-2xl shadow-md"
+      >
+        <h2 className="text-3xl font-bold text-primary mb-4 font-headline flex items-center justify-center gap-3 pt-16">
+          About IEEE SB NSSCE
+        </h2>
+        <p className="max-w-3xl mx-auto text-lg text-foreground/80">
+          IEEE is the world's largest professional organization of engineers, formed in 1963. The IEEE SB NSSCE was formed in 1987 with an aim of dedicating to advancing technology for the benefit of humanity. Since its establishment, IEEE SB NSSCE has been actively organizing events at regional, national and international levels. Our family has members from all departments and consists of 10 societies, including the Computer Society (CS), Robotics Automation Society (RAS), and Vehicular Technology Society (VTS), as well as affinity groups like Women in Engineering (WiE). Our student branch has hosted various technical events, hands-on workshops, and talk sessions, and has been recognized with many awards at regional, national, and global levels.
         </p>
       </section>
 
