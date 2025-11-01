@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, Zap } from 'lucide-react'; // Make sure to install lucide-react
+import AutomobilePartsBanner from './AutomobilePartsBanner.jsx'; // Import the new component
+import RevUpLogo from '../assets/RevUp_Clean.png';
 
 // --- Countdown Timer Component ---
 // This component calculates the time left and renders the boxes
@@ -60,29 +62,14 @@ const CountdownTimer = () => {
 // --- Hero Component ---
 // This is the main component for your homepage
 const Hero = () => {
-  // Dummy data for sponsor logos - replace with your actual paths
-  // e.g., 'public/logos/sponsor1.png' -> '/logos/sponsor1.png'
-  const sponsorLogos = [
-    '/logos/sponsor1.png',
-    '/logos/sponsor2.png',
-    '/logos/sponsor3.png',
-    '/logos/sponsor4.png',
-    '/logos/sponsor5.png',
-    '/logos/sponsor6.png',
-  ];
-
   return (
     <div id="home" className="bg-gray-900 text-white py-20 px-4">
       
       {/* --- Top Hero Section --- */}
       <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
         
-        {/* RevUp Logo (Placeholder SVG - replace with your actual logo) */}
-        <svg className="h-20 w-20 text-cyan-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          {/* This is a generic "speedometer" icon. You should replace this. */}
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.4 15a9 9 0 11-14.8-1.4" />
-        </svg>
+        {/* RevUp Logo */}
+        <img src={RevUpLogo} alt="RevUp Logo" className="h-40 mb-4" />
 
         {/* Event Title */}
         <h1 className="text-6xl font-bold text-white mb-2">RevUp</h1>
@@ -115,7 +102,7 @@ const Hero = () => {
       <div className="max-w-5xl mx-auto mt-20 space-y-12">
         
         {/* Why Join? Section */}
-        <div className="bg-gray-800 rounded-lg p-10">
+        <div className="bg-gray-800 rounded-lg p-10 animate-card">
           <div className="flex items-center justify-center mb-4">
             <Zap className="text-yellow-400 h-6 w-6 mr-2" />
             <h2 className="text-2xl font-semibold">Why Join?</h2>
@@ -128,7 +115,7 @@ const Hero = () => {
         </div>
 
         {/* About VTS Section */}
-        <div id="about" className="bg-gray-800 rounded-lg p-10">
+        <div id="about" className="bg-gray-800 rounded-lg p-10 animate-card">
           <h2 className="text-2xl font-semibold text-center mb-4">
             About IEEE VTS SBC NSSCE
           </h2>
@@ -148,7 +135,7 @@ const Hero = () => {
         </div>
 
         {/* About IEEE SB NSSCE Section */}
-        <div className="bg-gray-800 rounded-lg p-10">
+        <div className="bg-gray-800 rounded-lg p-10 animate-card">
           <h2 className="text-2xl font-semibold text-center mb-4">
             About IEEE SB NSSCE
           </h2>
@@ -173,7 +160,7 @@ const Hero = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
             
             {/* Member 1 */}
-            <div className="bg-gray-800 rounded-lg p-6 flex flex-col items-center text-center">
+            <div className="bg-gray-800 rounded-lg p-6 flex flex-col items-center text-center animate-card">
               {/* Replace this div with an <img /> tag when ready */}
               <div className="bg-gray-700 h-24 w-24 rounded-full mb-4"></div>
               <h3 className="text-xl font-semibold text-white">Jane Doe</h3>
@@ -181,7 +168,7 @@ const Hero = () => {
             </div>
             
             {/* Member 2 */}
-            <div className="bg-gray-800 rounded-lg p-6 flex flex-col items-center text-center">
+            <div className="bg-gray-800 rounded-lg p-6 flex flex-col items-center text-center animate-card">
               {/* Replace this div with an <img /> tag when ready */}
               <div className="bg-gray-700 h-24 w-24 rounded-full mb-4"></div>
               <h3 className="text-xl font-semibold text-white">John Smith</h3>
@@ -189,7 +176,7 @@ const Hero = () => {
             </div>
             
             {/* Member 3 */}
-            <div className="bg-gray-800 rounded-lg p-6 flex flex-col items-center text-center">
+            <div className="bg-gray-800 rounded-lg p-6 flex flex-col items-center text-center animate-card">
               {/* Replace this div with an <img /> tag when ready */}
               <div className="bg-gray-700 h-24 w-24 rounded-full mb-4"></div>
               <h3 className="text-xl font-semibold text-white">Priya Patel</h3>
@@ -199,38 +186,8 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* --- Moving Sponsors Section --- */}
-        <div className="py-12">
-          <h2 className="text-3xl font-semibold text-center mb-8">
-            Our Sponsors
-          </h2>
-          
-          {/* Main container must be relative */}
-          <div className="relative w-full overflow-hidden whitespace-nowrap py-4">
-            
-            {/* Left Fade Effect - (bg-gray-900 matches the page) */}
-            <div className="absolute top-0 left-0 bottom-0 w-24 bg-gradient-to-r from-gray-900 to-transparent z-10 pointer-events-none" />
-
-            {/* Scrolling Logos */}
-            {/* The animate-marquee class comes from tailwind.config.js */}
-            <div className="inline-block animate-marquee">
-              {/* Duplicate logos to create a continuous loop */}
-              {[...sponsorLogos, ...sponsorLogos].map((logo, index) => (
-                <img
-                  key={index}
-                  src={logo}
-                  alt={`Sponsor ${index + 1}`}
-                  className="h-16 mx-8 inline-block object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                />
-              ))}
-            </div>
-            
-            {/* Right Fade Effect - (bg-gray-900 matches the page) */}
-            <div className="absolute top-0 right-0 bottom-0 w-24 bg-gradient-to-l from-gray-900 to-transparent z-10 pointer-events-none" />
-
-          </div>
-        </div>
-        {/* --- END Sponsors Section --- */}
+        {/* --- Scrolling Automobile Parts Banner --- */}
+        <AutomobilePartsBanner />
 
       </div>
     </div>

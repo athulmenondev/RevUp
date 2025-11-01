@@ -53,15 +53,17 @@ export default function Schedule() {
       <div className="max-w-6xl mx-auto">
         
         {/* 1. Section Headline */}
-        <h2 className="text-4xl font-extrabold text-center mb-4">
-          The RevUp <span className="text-cyan-400">Assembly Line</span>
-        </h2>
-        <p className="text-lg text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-          Click through the event schedule to assemble this year's vehicle.
-        </p>
+        <div className="animate-card">
+          <h2 className="text-4xl font-extrabold text-center mb-4">
+            The RevUp <span className="text-cyan-400">Assembly Line</span>
+          </h2>
+          <p className="text-lg text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+            Click through the event schedule to assemble this year's vehicle.
+          </p>
+        </div>
 
         {/* 2. Day Toggle */}
-        <div className="flex justify-center items-center space-x-4 mb-12">
+        <div className="flex justify-center items-center space-x-4 mb-12 animate-card">
           <button
             onClick={() => setDayAndReset(1)}
             className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
@@ -87,7 +89,7 @@ export default function Schedule() {
         </div>
 
         {/* 3. The Assembly Line Visual */}
-        <div className="bg-gray-800 p-8 rounded-xl shadow-2xl border border-gray-700 mb-12">
+        <div className="bg-gray-800 p-8 rounded-xl shadow-2xl border border-gray-700 mb-12 animate-card">
           {/* Car Visual Area */}
           <div className="h-64 flex items-center justify-center text-gray-500 text-2xl font-bold relative overflow-hidden">
             {/* We will use simple text to represent the car parts for now */}
@@ -118,7 +120,7 @@ export default function Schedule() {
         </div>
 
         {/* 4. Controls and Display Area */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 animate-card">
           {/* Previous Button */}
           <button
             onClick={handlePrev}
@@ -178,5 +180,3 @@ function CarVisual({ currentDay, partsCompleted }) {
     );
   }
 }
-
-

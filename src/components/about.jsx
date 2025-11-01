@@ -25,7 +25,7 @@ const About = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
         
         {/* Section 1: About IEEE VTS SBC NSSCE */}
-        <div className="bg-gray-800 p-8 rounded-lg shadow-xl">
+        <div className="bg-gray-800 p-8 rounded-lg shadow-xl animate-card">
           <h2 className="text-3xl font-bold text-cyan-400 mb-4">
             About IEEE VTS SBC NSSCE
           </h2>
@@ -38,7 +38,7 @@ const About = () => {
         </div>
 
         {/* Section 2: About IEEE SB NSSCE */}
-        <div className="bg-gray-800 p-8 rounded-lg shadow-xl">
+        <div className="bg-gray-800 p-8 rounded-lg shadow-xl animate-card">
           <h2 className="text-3xl font-bold text-cyan-400 mb-4">
             About IEEE SB NSSCE
           </h2>
@@ -50,14 +50,14 @@ const About = () => {
 
       {/* Section 3: Meet the Team */}
       <div className="mt-20 md:mt-28 text-center">
-        <h2 className="text-4xl font-bold text-white mb-12">
+        <h2 className="text-4xl font-bold text-white mb-12 animate-card">
           Meet the Organizing Committee
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
           {teamMembers.map((member) => (
             <div
               key={member.name}
-              className="bg-gray-800 p-6 rounded-lg shadow-xl transform transition-transform duration-300 hover:scale-105"
+              className="bg-gray-800 p-6 rounded-lg shadow-xl transform transition-transform duration-300 hover:scale-105 animate-card"
             >
               <img
                 src={member.imageUrl}
@@ -76,4 +76,3 @@ const About = () => {
 };
 
 export default About;
-

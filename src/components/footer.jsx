@@ -17,22 +17,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           
           {/* Column 1: Logo and About */}
-          <div className="space-y-4">
+          <div className="space-y-4 flex flex-col items-center md:items-start text-center md:text-left">
             <Logo />
             <p className="text-gray-400 text-sm max-w-xs">
               A flagship initiative by the IEEE Vehicular Technology Society
               Student Branch Chapter of NSS College of Engineering, Palakkad.
             </p>
-            <div className="flex space-x-4">
-              <SocialIcon href="#" icon={<Twitter size={20} />} />
-              <SocialIcon href="#" icon={<Linkedin size={20} />} />
-              <SocialIcon href="#" icon={<Instagram size={20} />} />
-              <SocialIcon href="#" icon={<Facebook size={20} />} />
-            </div>
           </div>
 
           {/* Column 2: Quick Links */}
-          <div>
+          <div className="flex flex-col items-center md:items-start text-center md:text-left">
             <h3 className="text-sm font-semibold text-gray-300 tracking-wider uppercase">Quick Links</h3>
             <ul className="mt-4 space-y-2">
               <li><FooterLink to="/">Home</FooterLink></li>
@@ -42,22 +36,28 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Contact (placeholder) */}
-          <div>
+          {/* Column 3: Contact */}
+          <div className="flex flex-col items-center md:items-start text-center md:text-left">
             <h3 className="text-sm font-semibold text-gray-300 tracking-wider uppercase">Contact Us</h3>
             <ul className="mt-4 space-y-2 text-sm text-gray-400">
               <li>NSS College of Engineering, Palakkad, Kerala</li>
               <li>
-                <a href="mailto:contact@ieee-revup.com" className="text-sm text-gray-400 hover:text-cyan-400 transition-colors">
+                <a href="mailto:contact@ieee-revup.com" className="hover:text-cyan-400 transition-colors">
                   contact@ieee-revup.com
                 </a>
               </li>
               <li>
-                <a href="tel:+911234567890" className="text-sm text-gray-400 hover:text-cyan-400 transition-colors">
+                <a href="tel:+911234567890" className="hover:text-cyan-400 transition-colors">
                   +91 123 456 7890
                 </a>
               </li>
             </ul>
+            <div className="flex space-x-4 mt-4">
+              <SocialIcon href="#" icon={<Twitter size={20} />} />
+              <SocialIcon href="#" icon={<Linkedin size={20} />} />
+              <SocialIcon href="#" icon={<Instagram size={20} />} />
+              <SocialIcon href="#" icon={<Facebook size={20} />} />
+            </div>
           </div>
 
         </div>

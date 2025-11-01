@@ -1,51 +1,33 @@
-.part {
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+.assembly-line-container {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    background-color: #2d3748; /* gray-800 */
+    border-radius: 0.5rem;
+    overflow: hidden;
 }
 
-/* Initial States (off-screen) */
-.part-engine { transform: translateX(-50px); }
-.part-wheels { transform: translateY(50px); }
-.part-doors { transform: translateX(50px); }
-.part-paint { transform: scale(0.5); }
-.part-fuel { transform: translateY(-30px) scale(0); }
-
-.part-battery { transform: translateY(50px); }
-.part-spoiler { transform: translateX(30px) scale(0.5); }
-.part-lights { transform: scale(0); }
-.part-charge {  transform: translateY(-30px) scale(0); }
-
-
-/* Final States (in-place) */
-.car-assembly[data-step='1'] .part-engine,
-.car-assembly[data-step='2'] .part-engine,
-.car-assembly[data-step='3'] .part-engine,
-.car-assembly[data-step='4'] .part-engine,
-.car-assembly[data-step='5'] .part-engine,
-.car-assembly[data-step='2'] .part-wheels,
-.car-assembly[data-step='3'] .part-wheels,
-.car-assembly[data-step='4'] .part-wheels,
-.car-assembly[data-step='5'] .part-wheels,
-.car-assembly[data-step='3'] .part-fuel,
-.car-assembly-step[data-step='4'] .part-fuel,
-.car-assembly[data-step='5'] .part-fuel,
-.car-assembly[data-step='4'] .part-doors,
-.car-assembly[data-step='5'] .part-doors,
-.car-assembly[data-step='5'] .part-paint,
-.ev-assembly[data-step='1'] .part-battery,
-.ev-assembly[data-step='2'] .part-battery,
-.ev-assembly[data-step='3'] .part-battery,
-.ev-assembly[data-step='4' ] .part-battery,
-.ev-assembly[data-step='2'] .part-charge,
-.ev-assembly[data-step='3'] .part-charge,
-.ev-assembly[data-step='4'] .part-charge,
-.ev-assembly[data-step='3'] .part-spoiler,
-.ev-assembly[data-step='4'] .part-spoiler,
-.ev-assembly[data-step='4'] .part-lights {
-    transform: translate(0, 0) scale(1);
+.road {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    height: 40px;
+    background-color: #4a5568;
+    background-image: repeating-linear-gradient(
+        90deg, 
+        #edf2f7, 
+        #edf2f7 20px, 
+        transparent 20px, 
+        transparent 40px
+    );
+    background-repeat: repeat-x;
+    background-position: 0 50%;
+    background-size: auto 4px;
 }
 
 .animate-scroll {
-    animation: scroll 10s linear infinite;
+    animation: scroll 2s linear infinite;
 }
 
 @keyframes scroll {
@@ -54,5 +36,49 @@
     }
     to {
         transform: translateX(-50%);
+    }
+}
+
+.car-wrapper {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px; /* Car width */
+    height: 50px; /* Car height */
+    z-index: 10;
+}
+
+.car-body {
+    width: 100%;
+    height: auto;
+}
+
+.wheel {
+    position: absolute;
+    bottom: 2px; /* Adjust vertical position */
+    width: 22px; /* Wheel diameter */
+    height: 22px; /* Wheel diameter */
+    background-color: #1a202c; /* Dark color for the tire */
+    border: 3px solid #718096; /* Rim color */
+    border-radius: 50%;
+    /* Rotation animation */
+    animation: rotate-wheel 0.5s linear infinite;
+}
+
+.wheel-rear {
+    left: 10px; /* Adjust horizontal position for the rear wheel */
+}
+
+.wheel-front {
+    right: 12px; /* Adjust horizontal position for the front wheel */
+}
+
+@keyframes rotate-wheel {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
     }
 }

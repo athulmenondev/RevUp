@@ -1,50 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Briefcase, Users, Zap, ShieldCheck, Star, Check } from 'lucide-react'; // Added Star and Check icons
+import { useInView } from 'react-intersection-observer';
+import { Briefcase, Users, Zap, ShieldCheck, Star, Check } from 'lucide-react';
+import AutomobilePartsBanner from './AutomobilePartsBanner';
 
-// --- Reusable Sponsor Logos Component ---
-// (Copied from your Hero.js component for reusability)
-const SponsorLogos = () => {
-  // Dummy data for sponsor logos - replace with your actual paths
-  const sponsorLogos = [
-    '/logos/sponsor1.png',
-    '/logos/sponsor2.png',
-    '/logos/sponsor3.png',
-    '/logos/sponsor4.png',
-    '/logos/sponsor5.png',
-    '/logos/sponsor6.png',
-  ];
+// --- Reusable Animated Component ---
+const AnimatedCard = ({ children, delay }) => {
+  const { ref, inView } = useInView({ 
+    triggerOnce: true, // Only trigger the animation once
+    threshold: 0.1,    // Trigger when 10% of the item is visible
+  });
 
   return (
-    <div className="py-12">
-      <h2 className="text-3xl font-semibold text-center mb-8">
-        Our Sponsors
-      </h2>
-      
-      {/* Main container must be relative */}
-      <div className="relative w-full overflow-hidden whitespace-nowrap py-4">
-        
-        {/* Left Fade Effect - (bg-gray-900 matches the page) */}
-        <div className="absolute top-0 left-0 bottom-0 w-24 bg-gradient-to-r from-gray-900 to-transparent z-10 pointer-events-none" />
-
-        {/* Scrolling Logos */}
-        {/* The animate-marquee class comes from tailwind.config.js */}
-        <div className="inline-block animate-marquee">
-          {/* Duplicate logos to create a continuous loop */}
-          {[...sponsorLogos, ...sponsorLogos].map((logo, index) => (
-            <img
-              key={index}
-              src={logo}
-              alt={`Sponsor ${index + 1}`}
-              className="h-16 mx-8 inline-block object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-            />
-          ))}
-        </div>
-        
-        {/* Right Fade Effect - (bg-gray-900 matches the page) */}
-        <div className="absolute top-0 right-0 bottom-0 w-24 bg-gradient-to-l from-gray-900 to-transparent z-10 pointer-events-none" />
-
-      </div>
+    <div
+      ref={ref}
+      className={`transform transition-all duration-700 ease-out ${inView ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
     </div>
   );
 };
@@ -60,6 +33,30 @@ const partnershipData = [
   { deliverable: 'Logo on Delegate Certificates', platinum: true, gold: true, silver: true, bronze: false },
   { deliverable: 'Exclusive talk/Interaction with participants', platinum: true, gold: true, silver: false, bronze: false },
   { deliverable: 'Exclusive stall space for brand promotion', platinum: true, gold: false, silver: false, bronze: false },
+];
+
+// --- Data for Benefits Section ---
+const benefits = [
+  {
+    icon: <Zap className="h-10 w-10 text-cyan-400 mb-4" />,
+    title: "Enhance Brand Visibility",
+    description: "Gain wide exposure among hundreds of students, faculty, professionals, and industry leaders through event branding, digital promotions, and media coverage."
+  },
+  {
+    icon: <Users className="h-10 w-10 text-cyan-400 mb-4" />,
+    title: "Engage Future Talent",
+    description: "Interact directly with aspiring engineers and innovators who represent the next generation of technical leaders."
+  },
+  {
+    icon: <Briefcase className="h-10 w-10 text-cyan-400 mb-4" />,
+    title: "Strengthen Industry-Academia Collaboration",
+    description: "Support initiatives that encourage practical learning, research, and innovation in emerging technologies like electric vehicles, automation, and sustainable transport."
+  },
+  {
+    icon: <ShieldCheck className="h-10 w-10 text-cyan-400 mb-4" />,
+    title: "Showcase Corporate Social Responsibility",
+    description: "Align your brand with a student-led initiative that promotes education, technology, and sustainability - values that shape the future of mobility."
+  },
 ];
 
 
@@ -85,57 +82,22 @@ const SponsorsPage = () => {
 
         {/* --- Benefits Grid --- */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          
-          {/* Card 1: Enhance Brand Visibility */}
-          <div className="bg-gray-800 rounded-lg p-8">
-            <Zap className="h-10 w-10 text-cyan-400 mb-4" />
-            <h3 className="text-2xl font-semibold text-white mb-3">
-              Enhance Brand Visibility
-            </h3>
-            <p className="text-gray-300">
-              Gain wide exposure among hundreds of students, faculty, professionals, and industry leaders
-              through event branding, digital promotions, and media coverage.
-            </p>
-          </div>
-
-          {/* Card 2: Engage Future Talent */}
-          <div className="bg-gray-800 rounded-lg p-8">
-            <Users className="h-10 w-10 text-cyan-400 mb-4" />
-            <h3 className="text-2xl font-semibold text-white mb-3">
-              Engage Future Talent
-            </h3>
-            <p className="text-gray-300">
-              Interact directly with aspiring engineers and innovators who represent the next generation of
-              technical leaders.
-            </p>
-          </div>
-
-          {/* Card 3: Strengthen Industry-Academia Collaboration */}
-          <div className="bg-gray-800 rounded-lg p-8">
-            <Briefcase className="h-10 w-10 text-cyan-400 mb-4" />
-            <h3 className="text-2xl font-semibold text-white mb-3">
-              Strengthen Industry-Academia Collaboration
-            </h3>
-            <p className="text-gray-300">
-              Support initiatives that encourage practical learning, research, and innovation in emerging
-              technologies like electric vehicles, automation, and sustainable transport.
-            </p>
-          </div>
-
-          {/* Card 4: Showcase Corporate Social Responsibility */}
-          <div className="bg-gray-800 rounded-lg p-8">
-            <ShieldCheck className="h-10 w-10 text-cyan-400 mb-4" />
-            <h3 className="text-2xl font-semibold text-white mb-3">
-              Showcase Corporate Social Responsibility
-            </h3>
-            <p className="text-gray-300">
-              Align your brand with a student-led initiative that promotes education, technology, and
-              sustainability - values that shape the future of mobility.
-            </p>
-          </div>
+          {benefits.map((benefit, index) => (
+            <AnimatedCard key={benefit.title} delay={index * 150}> {/* Staggered delay */}
+              <div className="bg-gray-800 rounded-lg p-8 h-full"> {/* Added h-full for consistent height */}
+                {benefit.icon}
+                <h3 className="text-2xl font-semibold text-white mb-3">
+                  {benefit.title}
+                </h3>
+                <p className="text-gray-300">
+                  {benefit.description}
+                </p>
+              </div>
+            </AnimatedCard>
+          ))}
         </div>
 
-        {/* --- NEW: Partnership Tiers Table --- */}
+        {/* --- Partnership Tiers Table --- */}
         <div>
           <h2 className="text-3xl font-semibold text-center mb-10 flex items-center justify-center">
             <Star className="h-8 w-8 text-yellow-400 mr-3" />
@@ -187,12 +149,12 @@ const SponsorsPage = () => {
           </div>
         </div>
 
-        {/* --- Scrolling Sponsor Logos --- */}
-        <SponsorLogos />
+        {/* --- Scrolling Automobile Parts Banner --- */}
+        <AutomobilePartsBanner />
 
-        {/* --- Final CTA (Replaced with new content) --- */}
+        {/* --- Final CTA --- */}
         <div className="text-center">
-          <h2 className="text-3xl font-semibold mb-4 text-blue-300"> {/* Added text-blue-300 to match image style */}
+          <h2 className="text-3xl font-semibold mb-4 text-blue-300">
             Ready to Partner With Us?
           </h2>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-8">
@@ -213,5 +175,3 @@ const SponsorsPage = () => {
 };
 
 export default SponsorsPage;
-
-
