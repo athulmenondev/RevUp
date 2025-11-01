@@ -38,7 +38,7 @@ function App() {
             
             {/* Other pages */}
             <Route path="/schedule" element={<Schedule />} />
-            <Route path="/revup" element={<RevUpPage />} /> {/* <-- 2. ADD THE ROUTE HERE */}
+            <Route path="/revupp" element={<RevUpPage />} /> {/* <-- 2. ADD THE ROUTE HERE */}
             <Route path="/sponsors" element={<Sponsors />} />
             <Route path="/about" element={<About />} />
             

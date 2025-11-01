@@ -15,7 +15,7 @@ const Navbar = () => {
 
   const navLinks = [
     { name: 'Home', target: '/' },
-    { name: 'RevUp', target: '/revup' },
+    { name: 'RevUp', target: '/revupp' },
     { name: 'Sponsors', target: '/sponsors' },
     { name: 'About', target: '/about' },
   ];
