@@ -232,7 +232,7 @@ const RevUpPage = () => {
         </div>
 
         {/* --- Registration Section --- */}
-        <div>
+        <div id="register">
           <h2 className="text-3xl font-semibold text-center mb-10">
             Register for RevUp
           </h2>

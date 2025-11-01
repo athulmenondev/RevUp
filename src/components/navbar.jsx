@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import RevUpLogo from '../assets/RevUp_White_Logo.png';
+import { HashLink } from 'react-router-hash-link';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,12 +46,12 @@ const Navbar = () => {
                     {link.name}
                   </Link>
                 ))}
-                 <Link
-                  to="/register"
+                 <HashLink
+                  to="/revup#register" smooth
                   className="hidden md:block bg-blue-300 hover:bg-blue-400 text-gray-900 font-medium py-2 px-4 rounded-lg transition-colors duration-200"
                 >
                   Register Now
-                </Link>
+                </HashLink>
               </div>
 
               {/* Mobile Menu Button */}
