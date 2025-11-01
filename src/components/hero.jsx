@@ -89,7 +89,7 @@ const Hero = () => {
 
         {/* Register Button */}
         <HashLink
-          to="/revup#register" smooth// Or whatever your registration path is
+          to="/revupp#register" smooth// Or whatever your registration path is
           className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-8 rounded-lg text-lg transition-colors duration-200"
         >
           Register for RevUp

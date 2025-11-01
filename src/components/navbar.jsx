@@ -47,7 +47,7 @@ const Navbar = () => {
                   </Link>
                 ))}
                  <HashLink
-                  to="/revup#register" smooth
+                  to="/revupp#register" smooth
                   className="hidden md:block bg-blue-300 hover:bg-blue-400 text-gray-900 font-medium py-2 px-4 rounded-lg transition-colors duration-200"
                 >
                   Register Now
