@@ -139,19 +139,19 @@ const highlights = [
 
 const registrationTiers = [
   {
-    title: 'IEEE Member',
+    title: 'IEEE VTS Member',
     price: '₹299',
     type: 'Early Bird',
     link: 'https://docs.google.com/forms/d/e/1FAIpQLSflVyXrjJZWd6d6CToGcEkXA2vNvyZ9APyzuPN0EgF64wSygA/viewform?usp=dialog'
   },
   {
-    title: 'Non-IEEE Member',
+    title: 'IEEE Member',
     price: '₹399',
     type: 'Early Bird',
-    link: 'https://docs.google.com/forms/d/e/1FAIpQLSflVyXrjJZWd6d6CToGcEkXA2vNvyZ9APyzuPN0EgF64wSygA/viewform?usp=dialog'
+    link: 'https://docs.google.com/forms/d/e/1FAIpQLSeeUAczLHcWFl9a8jK4KjebA7v5mcUEBCGzTLo39UJULZiyIw/viewform?usp=dialog'
   },
   {
-    title: 'On-Spot Registration',
+    title: 'NoN-IEEE Member',
     price: '₹499',
     type: 'All Participants',
     link: 'https://docs.google.com/forms/d/e/1FAIpQLSflVyXrjJZWd6d6CToGcEkXA2vNvyZ9APyzuPN0EgF64wSygA/viewform?usp=dialog'

@@ -114,7 +114,23 @@ const Hero = () => {
             professional network.
           </p>
         </div>
-
+        {/* About IEEE SB NSSCE Section */}
+        <div className="bg-gray-800 rounded-lg p-10 animate-card">
+          <h2 className="text-2xl font-semibold text-center mb-4">
+            About IEEE SB NSSCE
+          </h2>
+          <p className="text-gray-300 text-center max-w-3xl mx-auto">
+            IEEE is the world's largest professional organization of engineers, formed in 1963. The
+            IEEE SB NSSCE was formed in 1987 with an aim of dedicating to advancing technology for
+            the benefit of humanity. Since its establishment, IEEE SB NSSCE has been actively
+            organizing events at regional, national and international levels. Our family has members
+            from all departments and consists of 10 societies, including the Computer Society (CS),
+            Robotics Automation Society (RAS), and Vehicular Technology Society (VTS), as well as
+            affinity groups like Women in Engineering (WIE). Our student branch has hosted various
+            technical events, hands-on workshops, and talk sessions, and has been recognized with
+            many awards at regional, national, and global levels.
+          </p>
+        </div>
         {/* About VTS Section */}
         <div id="about" className="bg-gray-800 rounded-lg p-10 animate-card">
           <h2 className="text-2xl font-semibold text-center mb-4">
@@ -135,57 +151,39 @@ const Hero = () => {
           </p>
         </div>
 
-        {/* About IEEE SB NSSCE Section */}
-        <div className="bg-gray-800 rounded-lg p-10 animate-card">
-          <h2 className="text-2xl font-semibold text-center mb-4">
-            About IEEE SB NSSCE
-          </h2>
-          <p className="text-gray-300 text-center max-w-3xl mx-auto">
-            IEEE is the world's largest professional organization of engineers, formed in 1963. The
-            IEEE SB NSSCE was formed in 1987 with an aim of dedicating to advancing technology for
-            the benefit of humanity. Since its establishment, IEEE SB NSSCE has been actively
-            organizing events at regional, national and international levels. Our family has members
-            from all departments and consists of 10 societies, including the Computer Society (CS),
-            Robotics Automation Society (RAS), and Vehicular Technology Society (VTS), as well as
-            affinity groups like Women in Engineering (WIE). Our student branch has hosted various
-            technical events, hands-on workshops, and talk sessions, and has been recognized with
-            many awards at regional, national, and global levels.
-          </p>
-        </div>
-
         {/* Organizing Committee Section */}
-        <div>
+        {/* <div>
           <h2 className="text-3xl font-semibold text-center">
             Meet the Organizing Committee
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10"> */}
             
             {/* Member 1 */}
-            <div className="bg-gray-800 rounded-lg p-6 flex flex-col items-center text-center animate-card">
+            {/* <div className="bg-gray-800 rounded-lg p-6 flex flex-col items-center text-center animate-card"> */}
               {/* Replace this div with an <img /> tag when ready */}
-              <div className="bg-gray-700 h-24 w-24 rounded-full mb-4"></div>
+              {/* <div className="bg-gray-700 h-24 w-24 rounded-full mb-4"></div>
               <h3 className="text-xl font-semibold text-white">Jane Doe</h3>
               <p className="text-gray-400">Chapter Chair</p>
-            </div>
+            </div> */}
             
             {/* Member 2 */}
-            <div className="bg-gray-800 rounded-lg p-6 flex flex-col items-center text-center animate-card">
+            {/* <div className="bg-gray-800 rounded-lg p-6 flex flex-col items-center text-center animate-card"> */}
               {/* Replace this div with an <img /> tag when ready */}
-              <div className="bg-gray-700 h-24 w-24 rounded-full mb-4"></div>
+              {/* <div className="bg-gray-700 h-24 w-24 rounded-full mb-4"></div>
               <h3 className="text-xl font-semibold text-white">John Smith</h3>
               <p className="text-gray-400">Event Lead</p>
-            </div>
+            </div> */}
             
             {/* Member 3 */}
-            <div className="bg-gray-800 rounded-lg p-6 flex flex-col items-center text-center animate-card">
+            {/* <div className="bg-gray-800 rounded-lg p-6 flex flex-col items-center text-center animate-card"> */}
               {/* Replace this div with an <img /> tag when ready */}
-              <div className="bg-gray-700 h-24 w-24 rounded-full mb-4"></div>
+              {/* <div className="bg-gray-700 h-24 w-24 rounded-full mb-4"></div>
               <h3 className="text-xl font-semibold text-white">Priya Patel</h3>
               <p className="text-gray-400">Sponsorship Head</p>
-            </div>
+            </div> */}
             
-          </div>
-        </div>
+          {/* </div> */}
+        {/* </div> */}
 
         {/* --- Scrolling Automobile Parts Banner --- */}
         <AutomobilePartsBanner />

@@ -30,7 +30,7 @@ export default function Footer() {
             <h3 className="text-sm font-semibold text-gray-300 tracking-wider uppercase">Quick Links</h3>
             <ul className="mt-4 space-y-2">
               <li><FooterLink to="/">Home</FooterLink></li>
-              <li><FooterLink to="/schedule">Schedule</FooterLink></li>
+              {/* <li><FooterLink to="/schedule">Schedule</FooterLink></li> */}
               <li><FooterLink to="/sponsors">Sponsors</FooterLink></li>
               <li><FooterLink to="/about">About</FooterLink></li>
             </ul>
@@ -43,20 +43,20 @@ export default function Footer() {
               <li>NSS College of Engineering, Palakkad, Kerala</li>
               <li>
                 <a href="mailto:contact@ieee-revup.com" className="hover:text-cyan-400 transition-colors">
-                  contact@ieee-revup.com
+                  ieeesbnssce@gmail.com
                 </a>
               </li>
               <li>
                 <a href="tel:+911234567890" className="hover:text-cyan-400 transition-colors">
-                  +91 123 456 7890
+                  +918281114492
                 </a>
               </li>
             </ul>
             <div className="flex space-x-4 mt-4">
-              <SocialIcon href="#" icon={<Twitter size={20} />} />
-              <SocialIcon href="#" icon={<Linkedin size={20} />} />
-              <SocialIcon href="#" icon={<Instagram size={20} />} />
-              <SocialIcon href="#" icon={<Facebook size={20} />} />
+              {/* <SocialIcon href="#" icon={<Twitter size={20} />} /> */}
+              <SocialIcon href="https://www.linkedin.com/company/ieeesbnssce/" icon={<Linkedin size={20} />} />
+              <SocialIcon href="https://www.instagram.com/ieeesbnssce?igsh=MWIxdzY1aXIxeHo0dA==" icon={<Instagram size={20} />} />
+              <SocialIcon href="https://www.facebook.com/ieeenssce?mibextid=rS40aB7S9Ucbxw6v" icon={<Facebook size={20} />} />
             </div>
           </div>
 
