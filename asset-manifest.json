@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/RevUp/static/css/main.9fc9c933.css",
-    "main.js": "/RevUp/static/js/main.1ad5ca7d.js",
+    "main.css": "/RevUp/static/css/main.cc3362a7.css",
+    "main.js": "/RevUp/static/js/main.65a4c6e1.js",
     "static/js/453.9643174a.chunk.js": "/RevUp/static/js/453.9643174a.chunk.js",
     "static/media/RevUp_White_Logo.png": "/RevUp/static/media/RevUp_White_Logo.c8a22a7b18cf4fe719f1.png",
     "static/media/RevUp_Clean.png": "/RevUp/static/media/RevUp_Clean.3150774e6b9fffcb6537.png",
     "index.html": "/RevUp/index.html",
-    "main.9fc9c933.css.map": "/RevUp/static/css/main.9fc9c933.css.map",
-    "main.1ad5ca7d.js.map": "/RevUp/static/js/main.1ad5ca7d.js.map",
+    "main.cc3362a7.css.map": "/RevUp/static/css/main.cc3362a7.css.map",
+    "main.65a4c6e1.js.map": "/RevUp/static/js/main.65a4c6e1.js.map",
     "453.9643174a.chunk.js.map": "/RevUp/static/js/453.9643174a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9fc9c933.css",
-    "static/js/main.1ad5ca7d.js"
+    "static/css/main.cc3362a7.css",
+    "static/js/main.65a4c6e1.js"
   ]
 }
