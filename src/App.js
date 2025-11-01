@@ -1,48 +1,51 @@
 import React from 'react';
+// 1. Add 'basename' prop to the BrowserRouter import
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css'; 
-// Import Tailwind's base styles (if you haven't already in index.css)
 import './index.css';
 
-// Import components based on your project structure
-// Note the lowercase paths matching your tree
+// Import components
 import Navbar from './components/navbar.jsx';
 import Hero from './components/hero.jsx';
 import Schedule from './components/schedule.jsx';
 import About from './components/about.jsx';
-import RevUpPage from './pages/RevUpPage.jsx'; // <-- 1. IMPORT RevUpPage HERE
-
-// --- ASSUMING these files exist ---
-// Your tree didn't list sponsors or footer, so I'm assuming the paths.
-// Please adjust if your filenames are different!
+import RevUpPage from './pages/RevUpPage.jsx';
 import Sponsors from './components/sponsors.jsx'; 
-import Footer from './components/footer.jsx'; // Assuming 'footer.jsx' based on your other files
+import Footer from './components/footer.jsx';
 
 function App() {
   return (
-    // BrowserRouter wraps your entire application
-    <BrowserRouter>
-      {/* This main div provides the default dark theme.
-        Remove 'App' if you don't use App.css
-      */}
+    // 2. Add the basename prop here.
+    //    It MUST match your repository name exactly.
+    <BrowserRouter basename="/RevUp">
+      
       <div className="App bg-gray-900 text-white min-h-screen font-sans">
         
-        {/* Navbar is outside <Routes>, so it appears on every page */}
         <Navbar />
         
         <main>
-          {/* <Routes> defines all the pages your app can render */}
           <Routes>
-            {/* The "Home" page, which renders the Hero component */}
+            {/* With basename, this path now correctly maps to:
+              [username].github.io/RevUp/ 
+            */}
             <Route path="/" element={<Hero />} />
             
-            {/* Other pages */}
+            {/* This path now correctly maps to:
+              [username].github.io/RevUp/schedule 
+            */}
             <Route path="/schedule" element={<Schedule />} />
-            <Route path="/revupp" element={<RevUpPage />} /> {/* <-- 2. ADD THE ROUTE HERE */}
+            
+            {/* Note: You wrote "revupp" (two 'p's) here. This will map to:
+              [username].github.io/RevUp/revupp
+              
+              If your page is also called "RevUp" (one 'p'), 
+              you might want to change this path to: path="/revup"
+            */}
+            <Route path="/revupp" element={<RevUpPage />} />
+            
             <Route path="/sponsors" element={<Sponsors />} />
             <Route path="/about" element={<About />} />
             
-            {/* A "Catch-all" 404 Not Found page */}
             <Route path="*" element={
               <div className="text-center py-20 px-4">
                 <h1 className="text-3xl font-bold text-cyan-400">404 - Page Not Found</h1>
@@ -52,7 +55,6 @@ function App() {
           </Routes>
         </main>
         
-        {/* Footer is also outside <Routes>, so it appears on every page */}
         <Footer />
       </div>
     </BrowserRouter>
