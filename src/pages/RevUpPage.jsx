@@ -141,19 +141,19 @@ const registrationTiers = [
   {
     title: 'IEEE VTS Member',
     price: '₹599',
-    type: 'Early Bird',
+    type: '-',
     link: 'https://docs.google.com/forms/d/e/1FAIpQLSflVyXrjJZWd6d6CToGcEkXA2vNvyZ9APyzuPN0EgF64wSygA/viewform?usp=dialog'
   },
   {
     title: 'IEEE Member',
     price: '₹699',
-    type: 'Early Bird',
+    type: '-',
     link: 'https://docs.google.com/forms/d/e/1FAIpQLSeeUAczLHcWFl9a8jK4KjebA7v5mcUEBCGzTLo39UJULZiyIw/viewform?usp=dialog'
   },
   {
     title: 'NoN-IEEE Member',
     price: '₹799',
-    type: 'All Participants',
+    type: '-',
     link: 'https://docs.google.com/forms/d/e/1FAIpQLSflVyXrjJZWd6d6CToGcEkXA2vNvyZ9APyzuPN0EgF64wSygA/viewform?usp=dialog'
   }
 ];
